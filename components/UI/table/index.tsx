@@ -1,9 +1,10 @@
-import React, { FC, ReactNode } from 'react'
+'use client'
+
+import React, { FC } from 'react'
 import { TableUiStyled } from './style'
 import { Table, TableProps } from 'antd'
-import { DefaultRecordType } from 'rc-table/lib/interface'
 
-interface IProps extends TableProps<DefaultRecordType> {
+interface IProps extends TableProps<any> {
   wrapperClassName?: string
 }
 

@@ -1,1 +1,1 @@
-export * from "./paginationParams";
+export * from "./childrenProps";

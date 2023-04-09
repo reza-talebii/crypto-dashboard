@@ -1,23 +1,25 @@
-import { Input } from "antd";
-import styled from "styled-components";
+import { Input } from 'antd'
+import styled from 'styled-components'
 
 export const InputUiKitContainer = styled(Input)`
-  color: rgb(211 211 211);
+  border-radius: 4px 4px 0px 0px;
   font: inherit;
   letter-spacing: inherit;
   padding: 4px 0 5px;
   border: 0;
-  box-sizing: content-box;
   background: none;
-  height: 1.4375em;
   margin: 0;
-  display: block;
   min-width: 0;
   width: 100%;
+  height: 100%;
   padding: 16.5px 14px;
 
   &:focus {
     border-inline-end-width: 0;
     box-shadow: none !important;
   }
-`;
+
+  &::placeholder {
+    color: #d6d6d6 !important;
+  }
+`

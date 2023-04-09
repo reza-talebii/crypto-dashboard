@@ -6,8 +6,11 @@ export const InputPasswordStyled = styled(Input.Password)`
   background: none;
   border: none !important;
 
+  .ant-input-password-icon {
+    color: ${props => props.theme.colors.secondary} !important;
+  }
+
   .ant-input {
-    color: rgb(211 211 211);
     font: inherit;
     letter-spacing: inherit;
     padding: 4px 0 5px;

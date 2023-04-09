@@ -1,7 +1,7 @@
-import { Input } from "antd";
+import { Input } from 'antd'
+import styled from 'styled-components'
 
-const { TextArea } = Input;
-import styled from "styled-components";
+const { TextArea } = Input
 
 export const TextAreaStyled = styled(TextArea)`
   color: rgb(211 211 211);
@@ -14,12 +14,23 @@ export const TextAreaStyled = styled(TextArea)`
   height: 1.4375em;
   margin: 0;
   display: block;
-  min-width: 0;
-  width: 100%;
+  width: 98%;
   padding: 16.5px 14px;
   resize: none !important;
+  text-align: right;
+  height: 100% !important;
+  direction: rtl;
+  padding-top: 0 !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0;
 
   &:focus {
     box-shadow: none;
   }
-`;
+
+  .ant-form-item-explain-error {
+    text-align: right !important;
+  }
+`
