@@ -14,8 +14,8 @@ export const antdThemeToken: Partial<AliasToken> = {
 
 export const antdThemeComponents: OverrideToken = {
   Button: {
-    colorBgContainerDisabled: '#D2D1D3',
-    colorTextDisabled: '#8F8C91',
+    colorBgContainerDisabled: '#CECECE',
+    colorTextDisabled: '#fff',
     colorText: '#fff',
     colorPrimaryText: '#fff',
     borderRadius: 16,

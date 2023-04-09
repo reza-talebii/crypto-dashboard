@@ -12,7 +12,7 @@ const PersonalInfoForm = () => {
     handlers: { stepHandler },
   } = useRegisterCtx()
   const [FormControl] = useForm()
-  const [disableBtn, setDisableBtn] = React.useState<boolean>(false)
+  const [disableBtn, setDisableBtn] = React.useState<boolean>(true)
 
   const onFinish = (values: any) => {
     console.log(values)

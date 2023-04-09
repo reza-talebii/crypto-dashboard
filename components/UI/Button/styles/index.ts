@@ -32,4 +32,8 @@ export const ButtonUiStyled = styled(Button)`
       background-color: ${props => props.theme.colors.primary}34 !important;
     }
   }
+
+  &.ant-btn-primary:disabled {
+    background-color: #cecece !important;
+  }
 `
