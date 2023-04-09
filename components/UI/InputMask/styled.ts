@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import InputMask from 'react-input-mask'
 
 export const InputUiMaskStyled = styled(InputMask)<{ haserror?: string }>`
-  color: ${props => props.theme.colors.text.white};
-  background: ${props => props.theme.colors.secondary};
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -14,7 +12,7 @@ export const InputUiMaskStyled = styled(InputMask)<{ haserror?: string }>`
   border: 1px solid ${props => props.theme.colors.border}30;
   border-radius: 8px;
   letter-spacing: 5px;
-  text-align: center;
+  text-align: left;
   transition: all 0.3s;
   &:focus-visible {
     outline: unset !important;
@@ -22,8 +20,8 @@ export const InputUiMaskStyled = styled(InputMask)<{ haserror?: string }>`
   &:focus {
     border: 1px solid
       ${({ haserror, theme }) => {
-        return haserror === 'true' ? theme.colors.danger : theme.colors.primary
+        return haserror === 'true' ? theme.colors.danger : `none`
       }} !important;
-    box-shadow: ${({ haserror, theme }) => (haserror === 'true' ? theme.colors.danger : theme.colors.success)}10 0px 5px 15px;
+    box-shadow: none;
   }
 `

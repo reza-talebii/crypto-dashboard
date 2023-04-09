@@ -5,14 +5,13 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  direction: rtl;
 }
 
-body{
-  background: #ffffff;
+
+body,h1,h2,h3,h4,h5,h6,div,p,strong,button,select,textarea,label,input,input::placeholder,span:not(.material-icons){
+  font-family: YekanBakhFaNum !important;
 }
-/* body,h1,h2,h3,h4,h5,h6,div,p,strong,button,select,textarea,label,input,input::placeholder,span:not(.material-icons){
-  font-family: TradeGothicLTRegular !important;
-} */
 
 
 /* width */
@@ -62,5 +61,10 @@ button, [type="button"], [type="reset"], [type="submit"] {
   color: #afafaf;
   font-size: 14px;
 }
+
+.ant-form-item-explain{
+  margin-right: 15px;
+}
+
 
 `

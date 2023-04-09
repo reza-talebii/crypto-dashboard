@@ -1,2 +1,1 @@
-export * from "./routes";
-export * from "./defaultPaginationParams";
+export * from './ROUTES'

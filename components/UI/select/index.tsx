@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { SelectProps } from 'antd'
 import FormControlUiKit from '../FormControl'
@@ -13,7 +15,7 @@ interface IProps extends SelectProps<any, any> {
 
 export const SelectUi: FC<IProps> = ({ label, wrapperClassName, ...props }) => {
   return (
-    <FormControlUiKit label={label} height={'45px'} className={wrapperClassName}>
+    <FormControlUiKit label={label} className={wrapperClassName}>
       <SelectStyled {...props} />
     </FormControlUiKit>
   )

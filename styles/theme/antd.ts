@@ -1,7 +1,7 @@
 import { AliasToken, OverrideToken } from 'antd/es/theme/interface'
 
 export const antdThemeToken: Partial<AliasToken> = {
-  colorPrimary: '#51c19a',
+  colorPrimary: '#388AEA',
   colorWarning: '#EC8A2A',
   colorError: '#FD736E',
   colorSuccess: '#49AA19',
@@ -16,9 +16,9 @@ export const antdThemeComponents: OverrideToken = {
   Button: {
     colorBgContainerDisabled: '#D2D1D3',
     colorTextDisabled: '#8F8C91',
-    colorText: '#112211',
-    colorPrimaryText: '#112211',
-    borderRadius: 4,
+    colorText: '#fff',
+    colorPrimaryText: '#fff',
+    borderRadius: 16,
   },
   Select: {
     colorBgContainer: 'transparent',

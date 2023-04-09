@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { ImageUiKitContainer } from './styles'
 import { IPropsImageUiKit } from './interfaces/IProps'
 
-const ImageUiKit: FC<IPropsImageUiKit> = ({ height, width, className, ...props }) => {
+const ImageUi: FC<IPropsImageUiKit> = ({ height, width, className, ...props }) => {
   return (
     <ImageUiKitContainer className={className} height={height} width={width}>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -12,4 +12,4 @@ const ImageUiKit: FC<IPropsImageUiKit> = ({ height, width, className, ...props }
   )
 }
 
-export default ImageUiKit
+export default ImageUi
