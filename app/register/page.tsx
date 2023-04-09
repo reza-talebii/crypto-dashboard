@@ -1,7 +1,6 @@
+import Register from '@/modules/register'
 import React from 'react'
 
-const Page = () => {
-  return <div>Page</div>
-}
+const Page = () => <Register />
 
 export default Page
