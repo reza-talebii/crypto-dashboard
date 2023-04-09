@@ -8,6 +8,14 @@ export const FormRegisterWrapper = styled(Col)`
   flex-direction: column;
   padding: 1rem 2rem;
 
+  .ant-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 11rem;
+    margin-top: 1.9rem;
+  }
+
   .headerTitle {
     text-align: center;
 

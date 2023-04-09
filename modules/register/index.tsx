@@ -2,30 +2,25 @@
 
 import React from 'react'
 import { FormRegisterWrapper, RegisterWrapper } from './styles'
-import { Col, Typography } from 'antd'
+import { Col } from 'antd'
 import RegisterBanner from './components/Banner'
-import ActionsRegister from './components/Actions'
+import { RegisterProvider } from './context'
+import HeaderTitleRegister from './components/HeaderTitle'
+import StepRender from './components/StepRender'
 
 const Register = () => {
   return (
     <RegisterWrapper>
-      <Col span={7}>
-        <RegisterBanner />
-      </Col>
-      <FormRegisterWrapper span={17}>
-        <section className="headerTitle">
-          <Typography.Title level={5} className="headerTitle__step">
-            مرحله 2 از 3
-          </Typography.Title>
-          <Typography.Title level={4} className="headerTitle__sub">
-            لطفا اطلاعات خود را با دقت وارد نمائید
-          </Typography.Title>
-        </section>
+      <RegisterProvider>
+        <Col span={7}>
+          <RegisterBanner />
+        </Col>
+        <FormRegisterWrapper span={17}>
+          <HeaderTitleRegister />
 
-        <section>steps</section>
-
-        <ActionsRegister />
-      </FormRegisterWrapper>
+          <StepRender />
+        </FormRegisterWrapper>
+      </RegisterProvider>
     </RegisterWrapper>
   )
 }

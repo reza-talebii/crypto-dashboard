@@ -1,16 +1,44 @@
-import ButtonUi from '@/components/UI/Button'
-import { Col, Divider, Row, Space } from 'antd'
-import React from 'react'
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
+'use client'
 
-const ActionsRegister = () => {
+import ButtonUi from '@/components/UI/Button'
+import { Col, Divider, Row } from 'antd'
+import React, { FC, useEffect } from 'react'
+import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
+import { useRegisterCtx } from '../context'
+import { Register_Steps, ValueOfRegister_Steps } from '../models'
+
+interface IProps {
+  disabled?: boolean
+  onSubmit?: () => void
+}
+
+const ActionsRegister: FC<IProps> = ({ disabled, onSubmit }) => {
+  const {
+    states: { activeStep },
+    handlers: { stepHandler },
+  } = useRegisterCtx()
+
+  const isLastStep = activeStep === Register_Steps.place
+  const isFirstStep = activeStep === Register_Steps.personal
+  const nextBtnText = isLastStep ? 'ثبت نام' : 'مرحله بعد'
+  // @ts-ignore
+  const onBack = () => stepHandler(prev => (prev - 1) as ValueOfRegister_Steps)
+
   return (
     <section>
       <Divider />
 
       <Row justify={'space-between'}>
-        <ButtonUi type="text">مرحله قبل</ButtonUi>
-        <ButtonUi icon={<BsArrowLeft />}>مرحله بعد</ButtonUi>
+        <Col span={12} className="text-right">
+          {!isFirstStep && (
+            <ButtonUi onClick={onBack} type="text">
+              مرحله قبل
+            </ButtonUi>
+          )}
+        </Col>
+        <ButtonUi disabled={disabled} onClick={onSubmit} icon={<BsArrowLeft />}>
+          {nextBtnText}
+        </ButtonUi>
       </Row>
     </section>
   )
