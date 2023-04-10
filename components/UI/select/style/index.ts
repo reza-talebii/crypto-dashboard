@@ -1,5 +1,5 @@
-import { Select } from "antd";
-import styled from "styled-components";
+import { Select } from 'antd'
+import styled from 'styled-components'
 
 export const SelectStyled = styled(Select)`
   width: 100%;
@@ -8,7 +8,7 @@ export const SelectStyled = styled(Select)`
   background: transparent !important;
 
   .ant-select-arrow {
-    color: #1c1b1f;
+    color: #d6d6d6;
   }
 
   .ant-select-focused .ant-select-selector,
@@ -19,4 +19,4 @@ export const SelectStyled = styled(Select)`
     box-shadow: none !important;
     background: transparent !important;
   }
-`;
+`

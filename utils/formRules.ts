@@ -1,6 +1,8 @@
 import { Rule } from 'antd/es/form'
 import Validator from 'validator'
 
+export const requiredFormRule: Rule[] = [{ required: true, message: 'فیلد مورد نظر اجباریست' }]
+
 export const emailFormRule: Rule[] = [
   { required: true, message: 'فیلد ایمیل اجباریست' },
   () => ({

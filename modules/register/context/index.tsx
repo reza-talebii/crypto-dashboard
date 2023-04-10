@@ -1,5 +1,5 @@
 import { FC, createContext, useContext, ReactNode, useState, Dispatch, SetStateAction } from 'react'
-import { ValueOfRegister_Steps } from '../models'
+import { Register_Steps, ValueOfRegister_Steps } from '../models'
 import { RegisterData } from '../models/schema/data'
 
 interface IContextValue {
@@ -17,7 +17,7 @@ interface IContextValue {
 export const RegisterCtx = createContext<IContextValue | undefined>(undefined)
 
 export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(0)
+  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(Register_Steps.place)
   const [RegisterData, setRegisterData] = useState<RegisterData | undefined>()
 
   //handler

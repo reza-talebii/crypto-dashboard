@@ -84,5 +84,11 @@ button, [type="button"], [type="reset"], [type="submit"] {
   margin-right: 15px;
 }
 
+/* .ant-select-dropdown{
+  min-width: 250px !important;
+  transform: translateX(101px) !important;
+
+} */
+
 
 `
