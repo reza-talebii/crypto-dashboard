@@ -1,4 +1,4 @@
-import { FC, createContext, useContext, ReactNode, useState } from 'react'
+import { FC, createContext, useContext, ReactNode, useState, Dispatch, SetStateAction } from 'react'
 import { ValueOfRegister_Steps } from '../models'
 import { RegisterData } from '../models/schema/data'
 
@@ -9,7 +9,7 @@ interface IContextValue {
   }
   handlers: {
     stepHandler: (step: ValueOfRegister_Steps) => void
-    setRegisterDataHandler: (data: RegisterData) => void
+    setRegisterData: Dispatch<SetStateAction<RegisterData | undefined>>
   }
   requests: {}
 }
@@ -22,7 +22,6 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   //handler
   const stepHandler = (step: ValueOfRegister_Steps) => setActiveStep(step)
-  const setRegisterDataHandler = (data: RegisterData) => setRegisterData(data)
 
   const ctxValue: IContextValue = {
     states: {
@@ -31,7 +30,7 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
     },
     handlers: {
       stepHandler,
-      setRegisterDataHandler,
+      setRegisterData,
     },
     requests: {},
   }

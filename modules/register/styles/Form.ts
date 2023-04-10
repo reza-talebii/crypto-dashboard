@@ -9,6 +9,7 @@ export const FormRegisterWrapper = styled(Col)`
   padding: 1rem 2rem;
 
   .ant-form {
+    gap: 1rem;
     height: 100%;
     display: flex;
     flex-direction: column;
