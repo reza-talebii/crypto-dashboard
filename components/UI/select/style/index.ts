@@ -7,9 +7,9 @@ export const SelectStyled = styled(Select)`
   box-shadow: none !important;
   background: transparent !important;
 
-  .ant-select-arrow {
+  /* .ant-select-arrow {
     color: #d6d6d6;
-  }
+  } */
 
   .ant-select-focused .ant-select-selector,
   .ant-select-selector:focus,

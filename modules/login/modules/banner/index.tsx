@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { BannerLoginWrapper } from './styles/Wrapper'
 import { Typography } from 'antd'

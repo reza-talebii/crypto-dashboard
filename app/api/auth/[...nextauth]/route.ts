@@ -4,6 +4,13 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: 'jwt',
+  },
+
+  pages: {
+    signIn: '/login',
+  },
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -24,13 +31,6 @@ export const authOptions: NextAuthOptions = {
 
         const data = (await res.json()) as TemplateAuthResponse<IUser>
 
-        // if (data.status === 400) {
-        //   throw new Error('رمز عبور یا ایمیل اشتباه است')
-        // }
-        // if (data.status === 500) {
-        //   throw new Error('خطای سرور')
-        // }
-
         if (data.status !== 200) {
           return null
         }
@@ -39,7 +39,6 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  secret: process.env.NEXT_PUBLIC_SECRET,
   callbacks: {
     jwt: async ({ token, user }) => {
       return { ...token, ...user }
@@ -49,15 +48,8 @@ export const authOptions: NextAuthOptions = {
       return session
     },
   },
-  session: {
-    strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60,
-  },
-
-  pages: {
-    signIn: '/login',
-    newUser: '/register',
-  },
 }
 
 export default NextAuth(authOptions)
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }

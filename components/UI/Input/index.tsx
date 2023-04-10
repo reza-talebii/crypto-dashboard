@@ -9,11 +9,12 @@ interface IProps extends InputProps {
   label?: string
   icon?: ReactNode
   wrapperClassName?: string
+  extra?: ReactNode | string
 }
 
-const InputUi: FC<IProps> = ({ label, icon, wrapperClassName, ...props }) => {
+const InputUi: FC<IProps> = ({ label, icon, extra, wrapperClassName, ...props }) => {
   return (
-    <FormControlUiKit label={label} className={wrapperClassName} icon={icon}>
+    <FormControlUiKit label={label} className={wrapperClassName} icon={icon} extra={extra}>
       <InputUiKitContainer {...props} />
     </FormControlUiKit>
   )

@@ -1,3 +1,5 @@
+'use client'
+
 import { ROUTES } from '@/models/enums'
 import React from 'react'
 import { MenuDashboardStyled } from '../styles/Menu'
@@ -5,6 +7,7 @@ import { HiOutlineHome } from '@react-icons/all-files/hi/HiOutlineHome'
 import { RiExchangeBoxLine } from '@react-icons/all-files/ri/RiExchangeBoxLine'
 import { MenuProps } from 'antd'
 import { signOut } from 'next-auth/react'
+import { usePathname } from 'next/navigation'
 
 type MenuItem = Required<MenuProps>['items']
 
@@ -39,7 +42,17 @@ const items: MenuItem = [
 ]
 
 const SideBarDashboardMenu = () => {
-  return <MenuDashboardStyled defaultSelectedKeys={[ROUTES.dashboard]} mode={'vertical'} theme={'light'} items={items} />
+  const pathname = usePathname()
+
+  return (
+    <MenuDashboardStyled
+      selectedKeys={[pathname || ROUTES.dashboard]}
+      defaultSelectedKeys={[ROUTES.dashboard]}
+      mode={'vertical'}
+      theme={'light'}
+      items={items}
+    />
+  )
 }
 
 export default SideBarDashboardMenu

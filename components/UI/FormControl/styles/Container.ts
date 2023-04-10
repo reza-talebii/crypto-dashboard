@@ -33,6 +33,7 @@ export const FormControlContainer = styled.section<{ height?: string }>`
   }
 
   .childrenContainer {
+    overflow: hidden;
     border-radius: 51px;
     display: flex;
     font-weight: 400;

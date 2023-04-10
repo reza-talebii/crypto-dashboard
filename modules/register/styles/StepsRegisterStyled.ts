@@ -2,7 +2,7 @@ import { Steps } from 'antd'
 import { styled } from 'styled-components'
 
 export const StepsRegisterStyled = styled(Steps)`
-  gap: 1rem;
+  gap: 1.5rem;
 
   .ant-steps-item-title {
     font-style: normal;
@@ -17,6 +17,17 @@ export const StepsRegisterStyled = styled(Steps)`
   }
 
   .ant-steps-item-tail {
-    background-color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    top: 37px !important;
+    height: 0% !important;
+    padding: 22px 0 7px !important;
+  }
+
+  .ant-steps-item .ant-steps-item-icon {
+    background: #9cc4f2;
+  }
+  .ant-steps-item-active .ant-steps-item-icon {
+    border: 3px solid #ffffff;
   }
 `

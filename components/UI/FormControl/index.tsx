@@ -11,9 +11,10 @@ interface IProps {
   icon?: ReactNode
   className?: string
   childrenContainerClassName?: string
+  extra?: ReactNode | string
 }
 
-const FormControlUiKit: FC<IProps> = ({ label, icon, children, height = '60px', className, childrenContainerClassName }) => {
+const FormControlUiKit: FC<IProps> = ({ label, icon, children, height = '60px', className, childrenContainerClassName, extra }) => {
   return (
     <FormControlContainer className={className} height={height}>
       <Typography.Text className="label">{label}</Typography.Text>
@@ -21,6 +22,7 @@ const FormControlUiKit: FC<IProps> = ({ label, icon, children, height = '60px', 
       <section className={`childrenContainer ${childrenContainerClassName}`}>
         <span className="icon">{icon}</span>
         {children}
+        {extra}
       </section>
     </FormControlContainer>
   )

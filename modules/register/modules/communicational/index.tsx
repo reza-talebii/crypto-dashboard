@@ -12,16 +12,20 @@ import { GiSmartphone } from '@react-icons/all-files/Gi/GiSmartphone'
 import { HiOutlineChatAlt } from '@react-icons/all-files/hi/HiOutlineChatAlt'
 import { z } from 'zod'
 import { emailFormRule, phoneNumberRule } from '@/utils'
+import ButtonUi from '@/components/UI/Button'
+import PhoneConfirmCode from './components/ConfirmCode'
+import Validator from 'validator'
 
 const formValueSchema = z.object({
   phoneNumber: z.string().length(11),
   email: z.string().email(),
-  // code: z.string().length(4),
 })
 
 type FormValues = z.infer<typeof formValueSchema>
 
 const CommunicationalInfo = () => {
+  const [activeTimer, setActiveTimer] = React.useState<boolean>(false)
+
   const {
     states: { RegisterData },
     handlers: { stepHandler, setRegisterData },
@@ -29,6 +33,7 @@ const CommunicationalInfo = () => {
 
   const [FormControl] = useForm()
   const phoneNumberValue = useWatch('phoneNumber', FormControl)
+
   const emailValue = useWatch('email', FormControl)
 
   const [disableBtn, setDisableBtn] = React.useState<boolean>(false)
@@ -56,12 +61,37 @@ const CommunicationalInfo = () => {
     }
   }, [phoneNumberValue, emailValue])
 
+  const onConfirmCode = (code: string) => {
+    setRegisterData(prev => ({ ...prev, code }))
+    setActiveTimer(false)
+  }
+
+  const PhoneInputExtra = () => {
+    const disableSendCode = !Validator.isMobilePhone(phoneNumberValue || '', 'fa-IR')
+
+    return (
+      <ButtonUi disabled={disableSendCode} onClick={() => setActiveTimer(true)} type="text" size="small" className="!min-w-[60px] !text-sm">
+        ارسال کد
+      </ButtonUi>
+    )
+  }
+
+  const showExtraCondition = !activeTimer && !RegisterData?.code
+
+  const onFinishTimer = () => setActiveTimer(false)
+
   return (
     <>
-      <FormUi form={FormControl} className="steps_wrapper" onFinish={onFinish}>
+      <FormUi form={FormControl} onFinish={onFinish}>
         <Form.Item name={'phoneNumber'} rules={phoneNumberRule}>
-          <InputUi placeholder={'09112564798'} label="شماره تماس" icon={<GiSmartphone />} />
+          <InputUi
+            placeholder={'09112564798'}
+            label="شماره تماس"
+            icon={<GiSmartphone />}
+            extra={showExtraCondition && <PhoneInputExtra />}
+          />
         </Form.Item>
+        {activeTimer && <PhoneConfirmCode onConfirm={onConfirmCode} phoneNumber={phoneNumberValue} onFinishTimer={onFinishTimer} />}
         <Form.Item name={'email'} rules={emailFormRule}>
           <InputUi placeholder={'example@mail.com'} label="ایمیل" icon={<HiOutlineChatAlt />} />
         </Form.Item>

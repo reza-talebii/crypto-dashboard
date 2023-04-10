@@ -7,4 +7,9 @@ export const DatePickerStyled = styled(DatePicker)`
   margin-top: 0 !important;
   height: 100% !important;
   width: 100%;
+  box-shadow: none;
+
+  input::placeholder {
+    color: #d6d6d6 !important;
+  }
 `

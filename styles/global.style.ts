@@ -99,7 +99,20 @@ button, [type="button"], [type="reset"], [type="submit"] {
 }
 
 .ant-picker-dropdown{
-  margin-top: 1rem !important;
+  top: 8.3906px !important;
+}
+
+.react-code-input{
+  direction: ltr;
+
+  input{
+  width: 60px !important;
+  height: 60px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #D6D6D6 !important;
+  border-radius: 16px !important;
+  text-align:center !important;
+  }
 }
 
 

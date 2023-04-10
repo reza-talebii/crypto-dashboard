@@ -3,8 +3,13 @@ import { BannerRegisterStyled } from '../styles/Banner'
 import ImageUi from '@/components/UI/Image'
 import { Steps, Typography } from 'antd'
 import { StepsRegisterStyled } from '../styles'
+import { useRegisterCtx } from '../context'
 
 const RegisterBanner = () => {
+  const {
+    states: { activeStep },
+  } = useRegisterCtx()
+
   return (
     <BannerRegisterStyled>
       <ImageUi src="/assets/images/common/logo.svg" alt="logo" height="94px" width="101px" />
@@ -15,7 +20,7 @@ const RegisterBanner = () => {
 
       <StepsRegisterStyled
         direction="vertical"
-        current={2}
+        current={activeStep}
         items={[
           {
             title: 'اطلاعات فردی',

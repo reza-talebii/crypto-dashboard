@@ -1,9 +1,9 @@
 import { ROUTES } from '@/models/enums'
-import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+import { getSessionServer } from '@/utils/getSessionServer'
 
 export default async function Home() {
-  const data = await getServerSession()
+  const user = await getSessionServer()
 
-  redirect(data ? ROUTES.dashboard : ROUTES.login)
+  redirect(user ? ROUTES.dashboard : ROUTES.login)
 }
