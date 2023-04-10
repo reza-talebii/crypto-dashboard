@@ -11,11 +11,14 @@ import { BsCreditCard } from '@react-icons/all-files/bs/BsCreditCard'
 import { MdDateRange } from '@react-icons/all-files/md/MdDateRange'
 import { nationalCodeRule } from '@/utils'
 import { z } from 'zod'
+import DatePickerUi from '@/components/UI/DatePicker'
+
+import _ from 'lodash'
 
 const formValueSchema = z.object({
   fullName: z.string(),
   nationalCode: z.string().length(10),
-  birthDay: z.string(),
+  birthDay: z.any(),
 })
 
 type FormValues = z.infer<typeof formValueSchema>
@@ -36,13 +39,14 @@ const PersonalInfoForm = () => {
       throw new Error('Invalid form data')
     }
 
-    setRegisterData(prev => ({ ...(prev || {}), ...values }))
+    setRegisterData(prev => ({ ...(prev || {}), ...values, birthDay: values.birthDay.$d }))
     stepHandler(Register_Steps.communicational)
   }
 
   useEffect(() => {
     if (!RegisterData?.fullName) return
-    FormControl.setFieldsValue(RegisterData)
+
+    FormControl.setFieldsValue(_.omit(RegisterData, ['birthDay']))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [RegisterData])
 
@@ -65,7 +69,7 @@ const PersonalInfoForm = () => {
           <InputUi label="کد ملی" placeholder="208-1235-456" icon={<BsCreditCard />} />
         </Form.Item>
         <Form.Item name={'birthDay'}>
-          <InputUi label="تاریخ تولد" placeholder="1370/06/31" icon={<MdDateRange />} />
+          <DatePickerUi label="تاریخ تولد" placeholder="1370/06/31" icon={<MdDateRange />} />
         </Form.Item>
       </FormUi>
       <ActionsRegister disabled={disableBtn} onSubmit={() => FormControl.submit()} />

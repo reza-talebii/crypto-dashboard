@@ -1,8 +1,8 @@
 export interface IBodyRegister {
-  firstName: string
-  lastName: string
+  name: string
   password: string
   email: string
+  password_confirmation: string
 }
 export interface IBodyLogin {
   password: string

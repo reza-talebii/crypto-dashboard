@@ -15,7 +15,7 @@ import { RiLockPasswordLine } from '@react-icons/all-files/ri/RiLockPasswordLine
 import { z } from 'zod'
 import { emailFormRule, passwordFormRule } from '@/utils'
 import { signIn } from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const FormValueSchema = z.object({
   email: z.string().email(),
@@ -24,6 +24,7 @@ const FormValueSchema = z.object({
 type FormValue = z.infer<typeof FormValueSchema>
 
 const LoginForm = () => {
+  const router = useRouter()
   const callbackUrl = useSearchParams()?.get('callbackUrl') || ROUTES.dashboard
   const [loading, setLoading] = React.useState<boolean>(false)
 
@@ -43,6 +44,7 @@ const LoginForm = () => {
       })
 
       res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
+      res?.ok && router.push(callbackUrl)
     } finally {
       setLoading(false)
     }

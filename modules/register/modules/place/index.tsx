@@ -12,10 +12,25 @@ import ButtonUi from '@/components/UI/Button'
 import { useGetCities } from '@/hook/useGetCities'
 import { useGetProvinces } from '@/hook/useGetProvinces'
 import { requiredFormRule } from '@/utils'
+import dynamic from 'next/dynamic'
+import { z } from 'zod'
+const Map = dynamic<any>(() => import('./components/Map').then(module => module), {
+  ssr: false,
+})
+
+const formValueSchema = z.object({
+  province: z.string(),
+  city: z.string(),
+  address: z.string(),
+  lat: z.string(),
+  lng: z.string(),
+})
+export type FormValuesPlaceInformation = z.infer<typeof formValueSchema>
 
 const PlaceInformation = () => {
   const {
-    states: { RegisterData },
+    states: { registerLoading },
+    requests: { registerReq },
   } = useRegisterCtx()
 
   const provincesController = useGetProvinces()
@@ -27,8 +42,12 @@ const PlaceInformation = () => {
 
   const citesController = useGetCities({ provinceId })
 
-  const onFinish = async (values: any) => {
-    console.log(values)
+  const onFinish = async (values: FormValuesPlaceInformation) => {
+    if (!formValueSchema.safeParse(values).success) {
+      throw new Error('Invalid form data')
+    }
+
+    registerReq(values)
   }
 
   //clear city value when province change
@@ -85,9 +104,11 @@ const PlaceInformation = () => {
           <ButtonUi type="text" className="text-base  mx-auto font-black">
             انتخاب طول و عرض جغرافیایی از روی نقشه
           </ButtonUi>
+
+          {/* <Map /> */}
         </Row>
       </FormUi>
-      <ActionsRegister onSubmit={() => FormControl.submit()} />
+      <ActionsRegister onSubmit={() => FormControl.submit()} loading={registerLoading} />
     </>
   )
 }

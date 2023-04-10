@@ -1,15 +1,22 @@
 import { message } from 'antd'
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { axiosInstance } from './axiosInstance'
+import { TemplateAuthResponse } from '@/models/interfaces'
 
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => response,
-  (error: AxiosError<{ message: string }>) => {
-    if (error.response?.status === 401) {
-      // localStorage.removeItem('token')
-      window.location.pathname = '/login'
+  (error: AxiosError<TemplateAuthResponse<null>>) => {
+    if (error.response?.status === 400) {
+      if (error?.response?.data?.errors) {
+        error?.response?.data?.errors?.forEach(error => {
+          message.error(error)
+        })
+
+        return
+      }
+
+      error?.response?.data?.message ?? message.error(error?.response?.data?.message!)
     }
-    if (error.response?.status === 400) message.error(error?.response?.data?.message!)
 
     return Promise.reject(error)
   },

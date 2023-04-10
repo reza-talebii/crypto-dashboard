@@ -10,9 +10,10 @@ import { Register_Steps, ValueOfRegister_Steps } from '../models'
 interface IProps {
   disabled?: boolean
   onSubmit?: () => void
+  loading?: boolean
 }
 
-const ActionsRegister: FC<IProps> = ({ disabled, onSubmit }) => {
+const ActionsRegister: FC<IProps> = ({ disabled, onSubmit, loading }) => {
   const {
     states: { activeStep },
     handlers: { stepHandler },
@@ -36,7 +37,7 @@ const ActionsRegister: FC<IProps> = ({ disabled, onSubmit }) => {
             </ButtonUi>
           )}
         </Col>
-        <ButtonUi disabled={disabled} onClick={onSubmit} icon={<BsArrowLeft />}>
+        <ButtonUi disabled={disabled} onClick={onSubmit} icon={<BsArrowLeft />} loading={loading}>
           {nextBtnText}
         </ButtonUi>
       </Row>

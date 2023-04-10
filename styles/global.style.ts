@@ -90,5 +90,13 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 } */
 
+.ant-picker-dropdown .ant-picker-header button{
+  background-color: transparent !important;
+}
+
+.ant-picker-dropdown{
+  margin-top: 1rem !important;
+}
+
 
 `
