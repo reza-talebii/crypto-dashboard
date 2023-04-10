@@ -9,4 +9,19 @@ export const StyledBar = styled(Sider)`
   height: 100%;
   background-color: #ffffff !important;
   border-radius: 16px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0px;
+
+  .title {
+    font-weight: 900;
+    font-size: 16px !important;
+    line-height: 25px;
+    text-align: center;
+  }
+
+  .ant-layout-sider-children {
+    width: 100%;
+  }
 `

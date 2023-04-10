@@ -3,7 +3,7 @@ import { AliasToken, OverrideToken } from 'antd/es/theme/interface'
 export const antdThemeToken: Partial<AliasToken> = {
   colorPrimary: '#388AEA',
   colorWarning: '#EC8A2A',
-  colorError: '#FD736E',
+  colorError: '#EA3838',
   colorSuccess: '#49AA19',
   colorLink: '#177DDC',
   colorTextDisabled: '#BFBFBF',

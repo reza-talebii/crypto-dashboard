@@ -5,7 +5,7 @@ const styledComponentsTheme: DefaultTheme = {
     secondary: '#112211',
     mainBg: '#E8F4FF',
     gray: '#4A4B4F',
-    error: '#A61D24',
+    error: '#EA3838',
     warning: '#D89614',
     success: '#52C41A',
     disable: '#BFBFBF',
