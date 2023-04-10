@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Page = () => {
-  return <div>Page</div>
+const Page = async () => {
+  return <div>home</div>
 }
 
 export default Page

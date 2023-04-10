@@ -2,6 +2,7 @@ import React from 'react'
 import { BannerRegisterStyled } from '../styles/Banner'
 import ImageUi from '@/components/UI/Image'
 import { Steps, Typography } from 'antd'
+import { StepsRegisterStyled } from '../styles'
 
 const RegisterBanner = () => {
   return (
@@ -12,7 +13,7 @@ const RegisterBanner = () => {
         ثبت نام
       </Typography.Title>
 
-      <Steps
+      <StepsRegisterStyled
         direction="vertical"
         current={2}
         items={[

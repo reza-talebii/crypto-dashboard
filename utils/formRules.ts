@@ -1,6 +1,8 @@
 import { Rule } from 'antd/es/form'
 import Validator from 'validator'
 
+export const requiredFormRule: Rule[] = [{ required: true, message: 'فیلد مورد نظر اجباریست' }]
+
 export const emailFormRule: Rule[] = [
   { required: true, message: 'فیلد ایمیل اجباریست' },
   () => ({
@@ -20,7 +22,7 @@ export const passwordFormRule: Rule[] = [
     validator(_, value) {
       if (!value) return Promise.reject('')
 
-      if (value.length < 8) Promise.reject(new Error('رمز عبور حداقل باید 8 کاراکتر باشد'))
+      if (value.length < 8) return Promise.reject(new Error('رمز عبور حداقل باید 8 کاراکتر باشد'))
 
       return Promise.resolve()
     },
@@ -69,7 +71,7 @@ export const nationalCodeRule: Rule[] = [
   },
   {
     validator: (_, value) =>
-      Number.isInteger(+value) && value.length === 10 ? Promise.resolve() : Promise.reject(new Error('فرمت مد ملی صحیح نمیباشد')),
+      Number.isInteger(+value) && value.length === 10 ? Promise.resolve() : Promise.reject(new Error('فرمت کد ملی صحیح نمیباشد')),
   },
 ]
 

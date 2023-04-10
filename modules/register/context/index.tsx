@@ -1,39 +1,92 @@
-import { FC, createContext, useContext, ReactNode, useState } from 'react'
-import { ValueOfRegister_Steps } from '../models'
-import { RegisterData } from '../models/schema/data'
+'use client'
+
+import { FC, createContext, useContext, ReactNode, useState, Dispatch, SetStateAction } from 'react'
+import { Register_Steps, ValueOfRegister_Steps } from '../models'
+import { RegisterData, registerData } from '../models/schema/data'
+import { FormValuesPlaceInformation } from '../modules/place'
+import { AuthService } from '@/services/controllers/auth/auth.service'
+import { signIn } from 'next-auth/react'
+import { ROUTES } from '@/models/enums'
+import { message } from 'antd'
+import { useRouter } from 'next/navigation'
 
 interface IContextValue {
   states: {
     activeStep: ValueOfRegister_Steps
     RegisterData?: RegisterData
+    registerLoading: boolean
   }
   handlers: {
     stepHandler: (step: ValueOfRegister_Steps) => void
-    setRegisterDataHandler: (data: RegisterData) => void
+    setRegisterData: Dispatch<SetStateAction<RegisterData | undefined>>
   }
-  requests: {}
+  requests: {
+    registerReq: (values: FormValuesPlaceInformation) => Promise<void>
+  }
 }
 
 export const RegisterCtx = createContext<IContextValue | undefined>(undefined)
 
 export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(0)
+  const router = useRouter()
+
+  const [registerLoading, setRegisterLoading] = useState<boolean>(false)
+  const { register } = new AuthService()
+  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(Register_Steps.personal)
   const [RegisterData, setRegisterData] = useState<RegisterData | undefined>()
 
   //handler
   const stepHandler = (step: ValueOfRegister_Steps) => setActiveStep(step)
-  const setRegisterDataHandler = (data: RegisterData) => setRegisterData(data)
+
+  //requests
+  const registerReq = async (values: FormValuesPlaceInformation) => {
+    const data = { ...RegisterData, ...values }
+
+    setRegisterLoading(true)
+
+    try {
+      const res = await register({
+        email: data.email!,
+        password: '12345678',
+        password_confirmation: '12345678',
+        name: data.fullName!,
+      })
+
+      if (res.status === 200) {
+        try {
+          const res = await signIn('credentials', {
+            redirect: false,
+            email: data.email!,
+            password: '12345678',
+            callbackUrl: ROUTES.dashboard,
+          })
+
+          res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
+          res?.ok && router.push(ROUTES.dashboard)
+        } finally {
+          setRegisterLoading(false)
+        }
+      } else {
+        setRegisterLoading(false)
+      }
+    } catch (error) {
+      setRegisterLoading(false)
+    }
+  }
 
   const ctxValue: IContextValue = {
     states: {
       activeStep,
       RegisterData,
+      registerLoading,
     },
     handlers: {
       stepHandler,
-      setRegisterDataHandler,
+      setRegisterData,
     },
-    requests: {},
+    requests: {
+      registerReq,
+    },
   }
   return <RegisterCtx.Provider value={ctxValue}>{children}</RegisterCtx.Provider>
 }

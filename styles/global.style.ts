@@ -13,6 +13,10 @@ body,h1,h2,h3,h4,h5,h6,div,p,strong,button,select,textarea,label,input,input::pl
   font-family: YekanBakhFaNum !important;
 }
 
+body{
+  background: #E8F4FF !important;
+}
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -82,6 +86,20 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 .ant-form-item-explain{
   margin-right: 15px;
+}
+
+/* .ant-select-dropdown{
+  min-width: 250px !important;
+  transform: translateX(101px) !important;
+
+} */
+
+.ant-picker-dropdown .ant-picker-header button{
+  background-color: transparent !important;
+}
+
+.ant-picker-dropdown{
+  margin-top: 1rem !important;
 }
 
 

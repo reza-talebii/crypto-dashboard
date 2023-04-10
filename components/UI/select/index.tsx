@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { SelectProps } from 'antd'
 import FormControlUiKit from '../FormControl'
 import { SelectStyled } from './style'
@@ -11,11 +11,12 @@ interface IProps extends SelectProps<any, any> {
   label?: string
   filterOption?: boolean | FilterFunc<BaseOptionType | DefaultOptionType>
   wrapperClassName?: string
+  icon?: string | ReactNode
 }
 
-export const SelectUi: FC<IProps> = ({ label, wrapperClassName, ...props }) => {
+export const SelectUi: FC<IProps> = ({ label, wrapperClassName, icon, ...props }) => {
   return (
-    <FormControlUiKit label={label} className={wrapperClassName}>
+    <FormControlUiKit label={label} className={wrapperClassName} icon={icon}>
       <SelectStyled {...props} />
     </FormControlUiKit>
   )
