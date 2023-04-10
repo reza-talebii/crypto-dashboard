@@ -1,11 +1,16 @@
 import FormUi from '@/components/UI/Form'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ActionsRegister from '../../components/Actions'
 import { useForm } from 'antd/lib/form/Form'
 import InputUi from '@/components/UI/Input'
 import { Form } from 'antd'
+import { useRegisterCtx } from '../../context'
 
 const PlaceInformation = () => {
+  const {
+    states: { RegisterData },
+  } = useRegisterCtx()
+
   const [FormControl] = useForm()
   const [disableBtn, setDisableBtn] = React.useState<boolean>(false)
 

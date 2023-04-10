@@ -1,1 +1,3 @@
-export * from "./childrenProps";
+export * from './childrenProps'
+export * from './IUser'
+export * from './TemplateAuthResponse'

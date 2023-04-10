@@ -3,11 +3,8 @@ import styled from 'styled-components'
 export const FormControlContainer = styled.section<{ height?: string }>`
   width: 100%;
   display: inline-flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
-  min-width: 0;
   padding: 0;
   margin: 0;
   border: 0;
@@ -31,7 +28,6 @@ export const FormControlContainer = styled.section<{ height?: string }>`
     right: 33px;
     top: -12px;
     z-index: 1;
-    pointer-events: auto;
     background: #fff;
     padding: 0 5px;
   }
@@ -42,9 +38,6 @@ export const FormControlContainer = styled.section<{ height?: string }>`
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.4375em;
-    letter-spacing: 0.00938em;
-    color: rgba(0, 0, 0, 0.87);
-    box-sizing: border-box;
     position: relative;
     cursor: text;
     display: inline-flex;
@@ -53,7 +46,6 @@ export const FormControlContainer = styled.section<{ height?: string }>`
     width: 100%;
     height: ${props => props.height};
     padding: 0 18px;
-    pointer-events: none;
     border: 1px solid #d6d6d6;
 
     .icon {

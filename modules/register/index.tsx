@@ -15,6 +15,7 @@ const Register = () => {
         <Col span={7}>
           <RegisterBanner />
         </Col>
+
         <FormRegisterWrapper span={17}>
           <HeaderTitleRegister />
 

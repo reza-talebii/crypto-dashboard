@@ -9,8 +9,8 @@ import MainLayout from '@/layout/main'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Crypto',
-    template: '%s | Crypto',
+    default: 'نیوکوین اسپیس',
+    template: '%s | نیوکوین اسپیس',
   },
   description: 'crypto dashboard',
 }
