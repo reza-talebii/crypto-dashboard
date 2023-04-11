@@ -5,16 +5,22 @@ import { Divider, Typography } from 'antd'
 import SideBarDashboardMenu from './Menu'
 import Link from 'next/link'
 import { ROUTES } from '@/models/enums'
+import { useLayoutStore } from '@/layout/store'
 
 const SideBarUi = () => {
+  const { collapseSidebar } = useLayoutStore()
+
   return (
-    <StyledBar collapsed>
+    <StyledBar collapsed={collapseSidebar}>
       <Link href={ROUTES.dashboard}>
         <ImageUi src="/assets/images/common/logo.svg" className="mx-auto" alt="logo" width="58px" height="54px" />
       </Link>
-      <Typography.Title className="title" level={1}>
-        نیوکوین اسپیس
-      </Typography.Title>
+
+      {collapseSidebar || (
+        <Typography.Title className="title" level={1}>
+          نیوکوین اسپیس
+        </Typography.Title>
+      )}
 
       <Divider className="!min-w-[80%] w-[80%] mx-auto" />
 

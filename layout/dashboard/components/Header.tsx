@@ -3,12 +3,20 @@ import { HeaderDashboard } from '../styles'
 import { Avatar, Badge, Space } from 'antd'
 
 import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack'
+import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward'
 import { IoMdNotificationsOutline } from '@react-icons/all-files/io/IoMdNotificationsOutline'
+import { useLayoutStore } from '@/layout/store'
 
 const HeaderUi = () => {
+  const { collapseSidebar, toggleCollapseSidebar } = useLayoutStore()
+
   return (
     <HeaderDashboard>
-      <IoIosArrowBack className="cursor-pointer" />
+      {collapseSidebar ? (
+        <IoIosArrowBack className="cursor-pointer" onClick={toggleCollapseSidebar} />
+      ) : (
+        <IoIosArrowForward className="cursor-pointer" onClick={toggleCollapseSidebar} />
+      )}
 
       <section className="flex justify-center items-center gap-5">
         <Badge className="cursor-pointer" dot color="#29C57A">
