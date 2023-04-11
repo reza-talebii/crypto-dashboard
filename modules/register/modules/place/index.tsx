@@ -1,5 +1,5 @@
 import FormUi from '@/components/UI/Form'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import ActionsRegister from '../../components/Actions'
 import { useForm } from 'antd/lib/form/Form'
 import InputUi from '@/components/UI/Input'
@@ -13,20 +13,24 @@ import { useGetCities } from '@/hook/useGetCities'
 import { useGetProvinces } from '@/hook/useGetProvinces'
 import { requiredFormRule } from '@/utils'
 import { z } from 'zod'
-import MapModal from './components/MapModal'
+import dynamic from 'next/dynamic'
+import PreLoading from '@/components/PreLoading'
+const MapModal = dynamic<any>(() => import('./components/MapModal').then(module => module), {
+  ssr: false,
+})
 
 const formValueSchema = z.object({
   province: z.string(),
   city: z.string(),
   address: z.string(),
-  lat: z.string(),
-  lng: z.string(),
+  lat: z.number(),
+  lng: z.number(),
 })
 export type FormValuesPlaceInformation = z.infer<typeof formValueSchema>
 
 const PlaceInformation = () => {
   const {
-    states: { registerLoading },
+    states: { registerLoading, RegisterData },
     requests: { registerReq },
   } = useRegisterCtx()
 
@@ -57,6 +61,13 @@ const PlaceInformation = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [provinceValue])
+
+  useEffect(() => {
+    if (!RegisterData?.latLng) return
+
+    FormControl.setFieldsValue(RegisterData.latLng)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [RegisterData?.latLng])
 
   return (
     <>
@@ -90,12 +101,12 @@ const PlaceInformation = () => {
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item name={'lat'} rules={requiredFormRule}>
+            <Form.Item name={'lng'} rules={requiredFormRule}>
               <InputUi label="طول جغرافیایی" placeholder="36.7589" icon={<BiMap />} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item name={'lng'} rules={requiredFormRule}>
+            <Form.Item name={'lat'} rules={requiredFormRule}>
               <InputUi label="عرض جغرافیایی" placeholder="64.5691" icon={<BiMap />} />
             </Form.Item>
           </Col>
@@ -104,7 +115,9 @@ const PlaceInformation = () => {
             انتخاب طول و عرض جغرافیایی از روی نقشه
           </ButtonUi>
 
-          <MapModal visible={showMap} onClose={() => setShowMap(false)} />
+          <Suspense fallback={<PreLoading />}>
+            <MapModal visible={showMap} onClose={() => setShowMap(false)} />
+          </Suspense>
         </Row>
       </FormUi>
       <ActionsRegister onSubmit={() => FormControl.submit()} loading={registerLoading} />

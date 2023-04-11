@@ -1,19 +1,37 @@
 'use client'
 
-import React from 'react'
+import React, { FC, Suspense } from 'react'
+import { MapContainer, TileLayer } from 'react-leaflet'
+import PreLoading from '@/components/PreLoading'
+import dynamic from 'next/dynamic'
+import { IPosition } from '@/modules/register/models/interfaces'
+const MapMarker = dynamic<any>(() => import('./MapMarker').then(module => module), {
+  ssr: false,
+})
 
-import { MapContainer, TileLayer, Circle } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+interface IProps {
+  position: IPosition
+  setPosition: (position: IPosition) => void
+}
 
-const position = { lat: 36.7589, lng: 64.5691 }
-
-const Map = () => {
+const Map: FC<IProps> = ({ position, setPosition }) => {
   return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false} touchZoom fadeAnimation={true}>
+    <MapContainer
+      center={position}
+      zoom={10}
+      scrollWheelZoom
+      touchZoom
+      fadeAnimation={true}
+      boxZoom
+      doubleClickZoom
+      markerZoomAnimation
+      zoomControl
+    >
       <TileLayer attribution="" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Circle radius={40} center={[36.7589, 64.5691]} bubblingMouseEvents={true} dashArray={[36.7589, 64.5691]} />
 
-      {/* <MapMarkers userPosition={userPosition} ref={mapMarkerRef} /> */}
+      <Suspense fallback={<PreLoading />}>
+        <MapMarker position={position} setPosition={setPosition} />
+      </Suspense>
     </MapContainer>
   )
 }
