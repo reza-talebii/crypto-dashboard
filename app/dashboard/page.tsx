@@ -1,10 +1,15 @@
-import { getSessionServer } from '@/utils/getSessionServer'
+'use client'
+
+import TradingviewChart from '@/modules/tradingviewChart'
+import { Row } from 'antd'
 import React from 'react'
 
-const Page = async () => {
-  const user = await getSessionServer()
-
-  return <div>{JSON.stringify(user)}</div>
+const Page = () => {
+  return (
+    <Row className="p-1">
+      <TradingviewChart />
+    </Row>
+  )
 }
 
 export default Page
