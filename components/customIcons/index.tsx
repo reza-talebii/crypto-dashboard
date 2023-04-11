@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { icons } from './icons-svg'
-import { IconsNameType } from './iconsName'
+
+export type IconsNameType = keyof typeof icons
 
 export const Icons: FC<{ name: IconsNameType }> = ({ name }) => {
   return icons[name]

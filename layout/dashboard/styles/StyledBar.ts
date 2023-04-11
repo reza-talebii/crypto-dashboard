@@ -14,6 +14,10 @@ export const StyledBar = styled(Sider)`
   align-items: center;
   padding: 1rem 0px;
 
+  &.ant-layout-sider-collapsed .ant-menu-title-content {
+    display: none;
+  }
+
   .title {
     font-weight: 900;
     font-size: 16px !important;

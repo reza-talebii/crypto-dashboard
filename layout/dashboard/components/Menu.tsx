@@ -3,43 +3,8 @@
 import { ROUTES } from '@/models/enums'
 import React from 'react'
 import { MenuDashboardStyled } from '../styles/Menu'
-import { HiOutlineHome } from '@react-icons/all-files/hi/HiOutlineHome'
-import { RiExchangeBoxLine } from '@react-icons/all-files/ri/RiExchangeBoxLine'
-import { MenuProps } from 'antd'
-import { signOut } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
-
-type MenuItem = Required<MenuProps>['items']
-
-const items: MenuItem = [
-  {
-    label: 'داشبورد',
-    icon: <HiOutlineHome size={20} />,
-    key: ROUTES.dashboard,
-  },
-  {
-    label: 'خرید و فروش',
-    icon: <RiExchangeBoxLine size={20} />,
-    key: 'exchange',
-  },
-  {
-    label: 'گزارش بازار',
-    icon: <RiExchangeBoxLine size={20} />,
-    key: 'charts',
-  },
-  {
-    label: 'کیف پول',
-    icon: <RiExchangeBoxLine size={20} />,
-    key: 'wallet',
-  },
-  {
-    label: 'خروج',
-    icon: <RiExchangeBoxLine size={20} />,
-    key: ROUTES.home,
-    onClick: () => signOut(),
-    className: 'logOut',
-  },
-]
+import { dashboardMenuItems } from '../constants/menuItems'
 
 const SideBarDashboardMenu = () => {
   const pathname = usePathname()
@@ -50,7 +15,7 @@ const SideBarDashboardMenu = () => {
       defaultSelectedKeys={[ROUTES.dashboard]}
       mode={'vertical'}
       theme={'light'}
-      items={items}
+      items={dashboardMenuItems}
     />
   )
 }
