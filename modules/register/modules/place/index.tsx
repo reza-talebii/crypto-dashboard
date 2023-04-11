@@ -1,5 +1,5 @@
 import FormUi from '@/components/UI/Form'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ActionsRegister from '../../components/Actions'
 import { useForm } from 'antd/lib/form/Form'
 import InputUi from '@/components/UI/Input'
@@ -12,11 +12,8 @@ import ButtonUi from '@/components/UI/Button'
 import { useGetCities } from '@/hook/useGetCities'
 import { useGetProvinces } from '@/hook/useGetProvinces'
 import { requiredFormRule } from '@/utils'
-import dynamic from 'next/dynamic'
 import { z } from 'zod'
-const Map = dynamic<any>(() => import('./components/Map').then(module => module), {
-  ssr: false,
-})
+import MapModal from './components/MapModal'
 
 const formValueSchema = z.object({
   province: z.string(),
@@ -39,6 +36,8 @@ const PlaceInformation = () => {
   const provinceValue = Form.useWatch('province', FormControl)
   const cityValue = Form.useWatch('city', FormControl)
   const provinceId = provinceValue && provincesController?.data?.find(p => p.value == provinceValue)?.id
+
+  const [showMap, setShowMap] = useState<boolean>(false)
 
   const citesController = useGetCities({ provinceId })
 
@@ -101,11 +100,11 @@ const PlaceInformation = () => {
             </Form.Item>
           </Col>
 
-          <ButtonUi type="text" className="text-base  mx-auto font-black">
+          <ButtonUi onClick={() => setShowMap(true)} type="text" className="text-base  mx-auto font-black">
             انتخاب طول و عرض جغرافیایی از روی نقشه
           </ButtonUi>
 
-          {/* <Map /> */}
+          <MapModal visible={showMap} onClose={() => setShowMap(false)} />
         </Row>
       </FormUi>
       <ActionsRegister onSubmit={() => FormControl.submit()} loading={registerLoading} />

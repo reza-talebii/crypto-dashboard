@@ -32,7 +32,7 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const [registerLoading, setRegisterLoading] = useState<boolean>(false)
   const { register } = new AuthService()
-  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(Register_Steps.personal)
+  const [activeStep, setActiveStep] = useState<ValueOfRegister_Steps>(Register_Steps.place)
   const [RegisterData, setRegisterData] = useState<RegisterData | undefined>()
 
   //handler

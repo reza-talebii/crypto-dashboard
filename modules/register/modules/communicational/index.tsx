@@ -96,7 +96,7 @@ const CommunicationalInfo = () => {
           <InputUi placeholder={'example@mail.com'} label="ایمیل" icon={<HiOutlineChatAlt />} />
         </Form.Item>
       </FormUi>
-      <ActionsRegister disabled={disableBtn} onSubmit={() => FormControl.submit()} />
+      <ActionsRegister disabled={disableBtn || !!!RegisterData?.code} onSubmit={() => FormControl.submit()} />
     </>
   )
 }
