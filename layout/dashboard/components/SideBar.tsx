@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { StyledBar } from '../styles/StyledBar'
 import ImageUi from '@/components/UI/Image'
@@ -6,12 +8,16 @@ import SideBarDashboardMenu from './Menu'
 import Link from 'next/link'
 import { ROUTES } from '@/models/enums'
 import { useLayoutStore } from '@/layout/store'
+import { useMediaQuery } from '@/hook/useMediaQuery '
 
 const SideBarUi = () => {
-  const { collapseSidebar } = useLayoutStore()
+  const isDesktop = useMediaQuery(768)
+  const { collapseSidebar, openMenu, toggleOpenMenu } = useLayoutStore()
+
+  const x = !isDesktop ? false : collapseSidebar
 
   return (
-    <StyledBar collapsed={collapseSidebar}>
+    <StyledBar onClick={() => openMenu && toggleOpenMenu()} collapsed={x} openMenu={openMenu}>
       <Link href={ROUTES.dashboard}>
         <ImageUi src="/assets/images/common/logo.svg" className="mx-auto" alt="logo" width="58px" height="54px" />
       </Link>

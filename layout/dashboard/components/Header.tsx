@@ -1,25 +1,33 @@
 import React from 'react'
 import { HeaderDashboard } from '../styles'
-import { Avatar, Badge, Space, Typography } from 'antd'
+import { Avatar, Badge, Typography } from 'antd'
 
 import { IoIosArrowBack } from '@react-icons/all-files/io/IoIosArrowBack'
 import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward'
 import { IoMdNotificationsOutline } from '@react-icons/all-files/io/IoMdNotificationsOutline'
 import { useLayoutStore } from '@/layout/store'
 import { useGetSession } from '@/hook'
+import { useMediaQuery } from '@/hook/useMediaQuery '
+import { FiMenu } from '@react-icons/all-files/fi/FiMenu'
 
 const HeaderUi = () => {
-  const { collapseSidebar, toggleCollapseSidebar } = useLayoutStore()
+  const isDesktop = useMediaQuery(768)
+  const { collapseSidebar, toggleCollapseSidebar, toggleOpenMenu } = useLayoutStore()
   const { user } = useGetSession()
+
+  const renderIconMenu = isDesktop ? (
+    collapseSidebar ? (
+      <IoIosArrowBack className="cursor-pointer" onClick={toggleCollapseSidebar} />
+    ) : (
+      <IoIosArrowForward className="cursor-pointer" onClick={toggleCollapseSidebar} />
+    )
+  ) : (
+    <FiMenu className="cursor-pointer" onClick={toggleOpenMenu} />
+  )
 
   return (
     <HeaderDashboard>
-      {collapseSidebar ? (
-        <IoIosArrowBack className="cursor-pointer" onClick={toggleCollapseSidebar} />
-      ) : (
-        <IoIosArrowForward className="cursor-pointer" onClick={toggleCollapseSidebar} />
-      )}
-
+      {renderIconMenu}
       <section className="flex justify-center items-center gap-5">
         <Badge className="cursor-pointer" dot color="#29C57A">
           <IoMdNotificationsOutline size={20} />
