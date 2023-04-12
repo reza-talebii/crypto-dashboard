@@ -1,7 +1,11 @@
 'use client'
 
-import { ResponsivePie } from '@nivo/pie'
+import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
+
+const ResponsivePie = dynamic(() => import('@nivo/pie').then(w => w.ResponsivePie), {
+  ssr: false,
+})
 
 const PieChart: FC<{ data: any }> = ({ data }) => {
   return (

@@ -10,7 +10,7 @@ import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
 import { useRegisterCtx } from '@/modules/register/context'
 import { IPosition } from '@/modules/register/models/interfaces'
 import 'leaflet/dist/leaflet.css'
-const Map = dynamic<any>(() => import('./Map').then(module => module), {
+const Map = dynamic<any>(() => import('../../../../../components/Map/Map').then(module => module), {
   ssr: false,
 })
 

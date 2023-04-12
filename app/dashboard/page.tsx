@@ -1,6 +1,7 @@
 'use client'
 
-import TradingviewChart from '@/modules/tradingviewChart'
+import PopularCoins from '@/modules/popularCoins'
+import TransactionValue from '@/modules/transactionValue'
 import Wallet from '@/modules/wallet'
 import { Row } from 'antd'
 import React from 'react'
@@ -10,6 +11,8 @@ const Page = () => {
     <Row className="p-1">
       <Wallet />
       {/* <TradingviewChart /> */}
+      <TransactionValue />
+      <PopularCoins />
     </Row>
   )
 }

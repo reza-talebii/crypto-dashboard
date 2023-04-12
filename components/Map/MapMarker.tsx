@@ -2,8 +2,13 @@
 
 import React, { FC } from 'react'
 import L from 'leaflet'
-import { useMapEvent, Marker } from 'react-leaflet'
+import { useMapEvent } from 'react-leaflet'
 import { IPosition } from '@/modules/register/models/interfaces'
+import dynamic from 'next/dynamic'
+
+const Marker = dynamic(() => import('react-leaflet').then(w => w.Marker), {
+  ssr: false,
+})
 
 interface IProps {
   position: IPosition
