@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 
 export const TradingViewChartWrapper = styled.section`
-  max-width: 765px;
   width: 100%;
   height: 310px;
   background: #ffffff;

@@ -6,6 +6,6 @@ interface IStore {
 }
 
 export const useLayoutStore = create<IStore>(set => ({
-  collapseSidebar: true,
+  collapseSidebar: false,
   toggleCollapseSidebar: () => set(state => ({ collapseSidebar: !state.collapseSidebar })),
 }))

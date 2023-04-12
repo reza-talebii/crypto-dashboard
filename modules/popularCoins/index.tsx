@@ -1,6 +1,7 @@
 import React from 'react'
 import { PopularCoinsWrapper } from './styles'
 import { Avatar, List, Select, Space, Typography } from 'antd'
+import { timeSelectOptions } from './constants'
 
 const data = [
   {
@@ -35,11 +36,13 @@ const data = [
 ]
 
 const PopularCoins = () => {
+  const [time, setTime] = React.useState<string>('7d')
+
   return (
     <PopularCoinsWrapper>
       <section className="header">
         <Typography.Title level={5}>محبوب‌ترین کوین‌ها</Typography.Title>
-        <Select options={[]} className="timeSelect" />
+        <Select onChange={value => setTime(value)} value={time} options={timeSelectOptions} className="timeSelect" />
       </section>
 
       <section className="header">
@@ -51,6 +54,7 @@ const PopularCoins = () => {
         className="listCoins"
         itemLayout="horizontal"
         dataSource={data}
+        loadMore={<section>1</section>}
         renderItem={(item, index) => (
           <List.Item key={index}>
             <Space size={4}>

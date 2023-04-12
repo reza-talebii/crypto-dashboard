@@ -10,6 +10,7 @@ const ResponsivePie = dynamic(() => import('@nivo/pie').then(w => w.ResponsivePi
 const PieChart: FC<{ data: any }> = ({ data }) => {
   return (
     <ResponsivePie
+      animate
       data={data}
       startAngle={-46}
       sortByValue={true}

@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 
 export const PopularCoinsWrapper = styled.section`
-  max-width: 321px;
   width: 100%;
   height: 545px;
   background: #ffffff;
@@ -45,6 +44,6 @@ export const PopularCoinsWrapper = styled.section`
   }
 
   .down {
-    color: ${props => props.theme.colors.danger};
+    color: #ea3838;
   }
 `
