@@ -7,16 +7,17 @@ import RegisterBanner from './components/Banner'
 import { RegisterProvider } from './context'
 import HeaderTitleRegister from './components/HeaderTitle'
 import StepRender from './components/StepRender'
+import { useMediaQuery } from '@/hook/useMediaQuery '
 
 const Register = () => {
   return (
     <RegisterWrapper>
       <RegisterProvider>
-        <Col span={7}>
+        <Col md={7} span={24}>
           <RegisterBanner />
         </Col>
 
-        <FormRegisterWrapper span={17}>
+        <FormRegisterWrapper md={17} span={24}>
           <HeaderTitleRegister />
 
           <StepRender />

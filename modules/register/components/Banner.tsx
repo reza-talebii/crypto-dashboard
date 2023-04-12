@@ -1,11 +1,18 @@
+'use client'
+
 import React from 'react'
 import { BannerRegisterStyled } from '../styles/Banner'
 import ImageUi from '@/components/UI/Image'
 import { Steps, Typography } from 'antd'
 import { StepsRegisterStyled } from '../styles'
 import { useRegisterCtx } from '../context'
+import { useMediaQuery } from '@/hook/useMediaQuery '
 
 const RegisterBanner = () => {
+  const isDesktop = useMediaQuery(768)
+
+  console.log('isDesktop', isDesktop)
+
   const {
     states: { activeStep },
   } = useRegisterCtx()
@@ -19,7 +26,7 @@ const RegisterBanner = () => {
       </Typography.Title>
 
       <StepsRegisterStyled
-        direction="vertical"
+        direction={isDesktop ? `vertical` : 'horizontal'}
         current={activeStep}
         items={[
           {

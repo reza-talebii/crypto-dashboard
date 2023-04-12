@@ -9,7 +9,7 @@ import LoginBanner from './modules/banner'
 const Login = () => {
   return (
     <LoginLayoutStyled>
-      <Col md={{ span: 12, order: 0 }} span={24} order={1}>
+      <Col md={{ span: 12, order: 0 }} span={0} order={1}>
         <LoginBanner />
       </Col>
       <Col md={12} span={24}>

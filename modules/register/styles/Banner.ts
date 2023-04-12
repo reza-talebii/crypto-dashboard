@@ -16,4 +16,14 @@ export const BannerRegisterStyled = styled.section`
     color: #ffffff;
     font-weight: 900;
   }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 0;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 400px) {
+    border-radius: 0;
+  }
 `

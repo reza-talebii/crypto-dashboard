@@ -9,4 +9,8 @@ export const RegisterWrapper = styled(Row)`
   @media (max-width: 767px) {
     gap: 1rem;
   }
+
+  @media (max-width: 400px) {
+    gap: 0;
+  }
 `

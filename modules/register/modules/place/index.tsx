@@ -73,7 +73,7 @@ const PlaceInformation = () => {
     <>
       <FormUi form={FormControl} onFinish={onFinish}>
         <Row gutter={[12, 16]}>
-          <Col span={12}>
+          <Col md={12} span={24}>
             <Form.Item name={'province'} rules={requiredFormRule}>
               <SelectUi
                 label="استان"
@@ -84,7 +84,7 @@ const PlaceInformation = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col md={12} span={24}>
             <Form.Item name={'city'} rules={requiredFormRule}>
               <SelectUi
                 label="شهر"
@@ -100,12 +100,12 @@ const PlaceInformation = () => {
               <InputUi label="آدرس" placeholder="ایران مازندران ساری" icon={<BiMapAlt />} />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col md={12} span={24}>
             <Form.Item name={'lng'} rules={requiredFormRule}>
               <InputUi label="طول جغرافیایی" placeholder="36.7589" icon={<BiMap />} />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col md={12} span={24}>
             <Form.Item name={'lat'} rules={requiredFormRule}>
               <InputUi label="عرض جغرافیایی" placeholder="64.5691" icon={<BiMap />} />
             </Form.Item>
