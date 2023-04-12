@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import dynamic from 'next/dynamic'
@@ -9,7 +11,19 @@ const AdvancedRealTimeChart = dynamic(() => import('react-ts-tradingview-widgets
 const TradingviewChart = () => {
   return (
     <TradingViewChartWrapper>
-      <AdvancedRealTimeChart autosize symbol={'btc' + 'usd'} theme="light" locale="fa_IR" style={'1'} interval="D"></AdvancedRealTimeChart>
+      <AdvancedRealTimeChart
+        copyrightStyles={{
+          parent: {
+            display: 'none',
+          },
+        }}
+        autosize
+        symbol={'btc' + 'usd'}
+        theme="light"
+        locale="fa_IR"
+        style={'1'}
+        interval="D"
+      ></AdvancedRealTimeChart>
     </TradingViewChartWrapper>
   )
 }
