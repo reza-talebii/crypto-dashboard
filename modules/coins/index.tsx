@@ -1,7 +1,5 @@
 'use client'
 
-import 'react-multi-carousel/lib/styles.css'
-
 import dynamic from 'next/dynamic'
 import React from 'react'
 
@@ -12,12 +10,15 @@ const Carousel = dynamic(() => import('react-multi-carousel').then(w => w), {
 import { CoinsSliderWrapper } from './styles'
 import CoinInfo from './components/CoinInfo'
 
+import 'react-multi-carousel/lib/styles.css'
+
 const Coins = () => {
   return (
     <CoinsSliderWrapper>
       <Carousel
-        ssr={false}
-        // autoPlay
+        itemClass={'carouselItem'}
+        ssr={true}
+        partialVisible={false}
         swipeable
         infinite={true}
         centerMode
@@ -29,7 +30,7 @@ const Coins = () => {
               min: 1024,
             },
             items: 4,
-            partialVisibilityGutter: 40,
+            // partialVisibilityGutter: 40,
           },
           mobile: {
             breakpoint: {
@@ -37,7 +38,7 @@ const Coins = () => {
               min: 0,
             },
             items: 2,
-            partialVisibilityGutter: 30,
+            // partialVisibilityGutter: 30,
           },
           tablet: {
             breakpoint: {
@@ -45,7 +46,7 @@ const Coins = () => {
               min: 464,
             },
             items: 4,
-            partialVisibilityGutter: 30,
+            // partialVisibilityGutter: 30,
           },
         }}
       >

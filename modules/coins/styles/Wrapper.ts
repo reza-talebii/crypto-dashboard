@@ -8,8 +8,12 @@ export const CoinsSliderWrapper = styled.section`
     border-radius: 10px;
   }
 
+  .react-multi-carousel-item {
+    width: auto !important;
+  }
+
   .react-multi-carousel-track {
-    gap: 2rem !important;
+    gap: 1.5rem !important;
   }
 
   .react-multi-carousel-list {
