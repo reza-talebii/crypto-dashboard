@@ -15,14 +15,14 @@ const Page = () => {
         <Coins />
       </Col>
 
-      <Col span={24} lg={18} className="gap-3 flex flex-col">
-        <section className="w-full flex gap-3 max-md:flex-col">
+      <Col span={24} lg={17} className="gap-3 flex flex-col">
+        <section className="w-full flex gap-3 max-lg:flex-col">
           <Wallet />
           <TransactionValue />
         </section>
         <TradingviewChart />
       </Col>
-      <Col span={24} lg={6}>
+      <Col span={24} lg={7}>
         <PopularCoins />
       </Col>
     </Row>

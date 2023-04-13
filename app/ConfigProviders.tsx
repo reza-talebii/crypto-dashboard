@@ -4,7 +4,7 @@ import { GlobalStyle } from '@/styles/global.style'
 import { antdThemeComponents, antdThemeToken } from '@/styles/theme'
 import styledComponentsTheme from '@/styles/theme/styledComponent'
 import { ConfigProvider } from 'antd'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import StyledComponentsRegistry from '@/lib/registry'
@@ -16,23 +16,17 @@ const ConfigProviders: FC<{ children: ReactNode }> = ({ children }) => {
     token: antdThemeToken,
     components: antdThemeComponents,
   }
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchInterval: 20000,
-      },
-    },
-  })
+
+  const [queryClient] = useState(() => new QueryClient({ defaultOptions: { queries: { refetchInterval: 20000 } } }))
+
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <ConfigProvider theme={antdTheme} direction="rtl" locale={fa_IR}>
-          <StyledComponentsRegistry>
-            <ThemeProvider theme={styledComponentsTheme}>
-              <GlobalStyle />
-              {children}
-            </ThemeProvider>
-          </StyledComponentsRegistry>
+          <ThemeProvider theme={styledComponentsTheme}>
+            <GlobalStyle />
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </ThemeProvider>
         </ConfigProvider>
       </QueryClientProvider>
     </SessionProvider>

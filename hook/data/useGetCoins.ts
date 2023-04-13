@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 
 interface IArgs {
   params: IBodyGetMarket
-  config?: any
 }
 
 export const useGetCoins = (args: IArgs) => {
@@ -16,7 +15,7 @@ export const useGetCoins = (args: IArgs) => {
     return res?.data
   }
 
-  const controller = useQuery([RQEndpoint.GET_COINS, args.params], fetcher, args.config)
+  const controller = useQuery([RQEndpoint.GET_COINS, args.params], fetcher)
 
   return controller
 }

@@ -9,7 +9,7 @@ const TransactionValue = () => {
   return (
     <TransactionValueWrapper>
       <Typography.Title level={5}>ارزش معاملات هفته گذشته</Typography.Title>
-      <section className="w-full h-full">
+      <section className="w-full h-full flex justify-center">
         <BarChart />
       </section>
     </TransactionValueWrapper>

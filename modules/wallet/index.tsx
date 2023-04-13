@@ -32,7 +32,13 @@ const Wallet = () => {
         </section>
       </Col>
 
-      <Col span={12}>{data && <PieChart data={data} />}</Col>
+      <Col span={12}>
+        {data && (
+          <section className="w-[180px] h-[180px]">
+            <PieChart data={data} />
+          </section>
+        )}
+      </Col>
     </WalletWrapper>
   )
 }

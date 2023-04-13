@@ -7,7 +7,6 @@ import RegisterBanner from './components/Banner'
 import { RegisterProvider } from './context'
 import HeaderTitleRegister from './components/HeaderTitle'
 import StepRender from './components/StepRender'
-import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 
 const Register = () => {
   return (

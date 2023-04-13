@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useRegisterCtx } from '../context'
 import { Register_Steps } from '../models'
