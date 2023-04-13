@@ -7,7 +7,7 @@ import { IoIosArrowForward } from '@react-icons/all-files/io/IoIosArrowForward'
 import { IoMdNotificationsOutline } from '@react-icons/all-files/io/IoMdNotificationsOutline'
 import { useLayoutStore } from '@/layout/store'
 import { useGetSession } from '@/hook'
-import { useMediaQuery } from '@/hook/useMediaQuery '
+import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 import { FiMenu } from '@react-icons/all-files/fi/FiMenu'
 
 const HeaderUi = () => {

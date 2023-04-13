@@ -1,5 +1,6 @@
 'use client'
 
+import { IAssets } from '@/services/controllers/static/models'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 
@@ -7,16 +8,19 @@ const ResponsivePie = dynamic(() => import('@nivo/pie').then(w => w.ResponsivePi
   ssr: false,
 })
 
-const PieChart: FC<{ data: any }> = ({ data }) => {
+const PieChart: FC<{ data: IAssets[] }> = ({ data }) => {
   return (
     <ResponsivePie
       animate
-      data={data}
+      data={data.map(i => ({ ...i, id: i.name }))}
       startAngle={-46}
       sortByValue={true}
       innerRadius={0.03}
       padAngle={2}
-      colors={{ scheme: 'category10' }}
+      colors={function (e) {
+        /* @ts-ignore */
+        return e.data.color
+      }}
       borderColor={{
         from: 'color',
         modifiers: [['darker', 0.8]],
@@ -28,13 +32,14 @@ const PieChart: FC<{ data: any }> = ({ data }) => {
       arcLinkLabelsSkipAngle={18}
       arcLinkLabelsTextColor={{ theme: 'background' }}
       arcLinkLabelsThickness={2}
-      arcLinkLabelsColor="#e61414"
+      arcLinkLabelsColor={'#fff'}
       arcLabel={function (e) {
-        return e.label.toString()
+        /* @ts-ignore */
+        return e.data.symbol
       }}
       arcLabelsRadiusOffset={0.6}
       arcLabelsSkipAngle={15}
-      arcLabelsTextColor="#eeeded"
+      arcLabelsTextColor={'#fff'}
       defs={[
         {
           id: 'dots',
@@ -53,56 +58,6 @@ const PieChart: FC<{ data: any }> = ({ data }) => {
           rotation: -45,
           lineWidth: 6,
           spacing: 10,
-        },
-      ]}
-      fill={[
-        {
-          match: {
-            id: 'ruby',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'c',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'go',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'python',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'scala',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'lisp',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'elixir',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'javascript',
-          },
-          id: 'lines',
         },
       ]}
       legends={[]}

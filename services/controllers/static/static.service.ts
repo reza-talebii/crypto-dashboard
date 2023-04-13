@@ -1,9 +1,9 @@
 import { apiCaller } from '@/services/apiCaller'
 import { StaticUrls } from './urls'
-import { ICity, IParamsGetCities, IProvince } from './models'
+import { IAssets, ICity, IParamsGetCities, IProvince } from './models'
 
 const config = {
-  baseURL: 'http://localhost:3000/',
+  baseURL: process.env.NEXT_PUBLIC_PRODUCTION_URL,
 }
 
 export class StaticService {
@@ -12,5 +12,8 @@ export class StaticService {
   }
   getCities(body: IParamsGetCities) {
     return apiCaller.post<ICity[]>(StaticUrls.getCities, body, config)
+  }
+  getAssets() {
+    return apiCaller.get<IAssets[]>(StaticUrls.getAssets, config)
   }
 }

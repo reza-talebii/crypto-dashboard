@@ -16,7 +16,13 @@ const ConfigProviders: FC<{ children: ReactNode }> = ({ children }) => {
     token: antdThemeToken,
     components: antdThemeComponents,
   }
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchInterval: 20000,
+      },
+    },
+  })
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>

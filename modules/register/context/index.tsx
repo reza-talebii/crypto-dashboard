@@ -62,7 +62,10 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
           })
 
           res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
-          res?.ok && router.push(ROUTES.dashboard)
+          if (res?.ok) {
+            message.success('ثبت نام شما باموفقیت انجام شد در حال انتقال به پنل ...')
+            router.push(ROUTES.dashboard)
+          }
         } finally {
           setRegisterLoading(false)
         }

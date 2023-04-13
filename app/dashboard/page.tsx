@@ -11,20 +11,20 @@ import React from 'react'
 const Page = () => {
   return (
     <Row gutter={[16, 16]}>
-      {/* <Col span={24}>
+      <Col span={24}>
         <Coins />
       </Col>
+
       <Col span={24} lg={18} className="gap-3 flex flex-col">
         <section className="w-full flex gap-3 max-md:flex-col">
-          <Wallet />
+          {/* <Wallet /> */}
           <TransactionValue />
         </section>
-        <TradingviewChart />
+        {/* <TradingviewChart /> */}
       </Col>
-
       <Col span={24} lg={6}>
-        <PopularCoins />
-      </Col> */}
+        {/* <PopularCoins /> */}
+      </Col>
     </Row>
   )
 }

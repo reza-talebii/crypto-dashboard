@@ -31,7 +31,11 @@ export const dashboardMenuItems: MenuItem = [
     label: 'خروج',
     icon: <Icons name="logout" />,
     key: ROUTES.home,
-    onClick: () => signOut(),
+    onClick: () =>
+      signOut({
+        redirect: true,
+        callbackUrl: ROUTES.login,
+      }),
     className: 'logOut',
   },
 ]

@@ -1,4 +1,6 @@
 export const RQEndpoint = {
   GET_CITIES: 'GET_CITIES',
   GET_PROVINCE: 'GET_PROVINCE',
+  GET_COINS: 'GET_COINS',
+  GET_ASSETS: 'GET_ASSETS',
 }

@@ -29,6 +29,22 @@ export const passwordFormRule: Rule[] = [
   }),
 ]
 
+export const confirmPasswordFormRule = (password?: string) => {
+  const rule: Rule[] = [
+    { required: true, message: 'فیلد تایید رمز عبور اجباریست' },
+    () => ({
+      validator(_, value) {
+        if (!value) return Promise.reject('')
+
+        if (value !== password) return Promise.reject(new Error('تایید رمز عبور وارد شده مطابقت ندارد'))
+
+        return Promise.resolve()
+      },
+    }),
+  ]
+  return rule
+}
+
 export const codeFormRule: Rule[] = [
   { required: true, message: 'وارد کردن کد اجباریست' },
   () => ({

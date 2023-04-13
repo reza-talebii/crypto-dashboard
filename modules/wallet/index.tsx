@@ -4,29 +4,11 @@ import React from 'react'
 import { WalletWrapper } from './styles'
 import PieChart from '@/components/Charts/Pie'
 import { Badge, Col, List, Typography } from 'antd'
-
-const data = [
-  {
-    id: 'btc',
-    label: 'btc',
-    value: 3000,
-    color: 'hsl(271, 70%, 50%)',
-  },
-  {
-    id: 'Eth',
-    label: 'Eth',
-    value: 1900,
-    color: 'hsl(177, 70%, 50%)',
-  },
-  {
-    id: 'usdt',
-    label: 'usdt',
-    value: 5422,
-    color: 'hsl(242, 70%, 50%)',
-  },
-]
+import { useGetAssets } from '@/hook/data'
 
 const Wallet = () => {
+  const { data } = useGetAssets()
+
   return (
     <WalletWrapper>
       <Col span={12}>
@@ -38,16 +20,18 @@ const Wallet = () => {
             dataSource={data}
             renderItem={(item, index) => (
               <List.Item key={index}>
-                <List.Item.Meta avatar={<Badge dot color={item.color} />} title={<strong>{item.label}</strong>} description="45 درصد" />
+                <List.Item.Meta
+                  avatar={<Badge dot color={item.color} />}
+                  title={<strong>{item.name}</strong>}
+                  description={item.percent + ' درصد '}
+                />
               </List.Item>
             )}
           />
         </section>
       </Col>
 
-      <Col span={12}>
-        <PieChart data={data} />
-      </Col>
+      <Col span={12}>{data && <PieChart data={data} />}</Col>
     </WalletWrapper>
   )
 }

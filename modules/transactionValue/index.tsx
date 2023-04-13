@@ -3,7 +3,7 @@
 import React from 'react'
 import { TransactionValueWrapper } from './styles'
 import { Typography } from 'antd'
-import { BarChart } from '@/components/Charts/Bar'
+import BarChart from '@/components/Charts/Bar'
 
 const TransactionValue = () => {
   return (

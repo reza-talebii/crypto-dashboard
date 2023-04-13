@@ -22,7 +22,6 @@ const Coins = () => {
         swipeable
         infinite={true}
         centerMode
-        slidesToSlide={4}
         responsive={{
           desktop: {
             breakpoint: {

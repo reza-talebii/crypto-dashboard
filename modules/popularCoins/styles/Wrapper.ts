@@ -10,6 +10,14 @@ export const PopularCoinsWrapper = styled.section`
   flex-direction: column;
   gap: 1rem;
 
+  .listCoins {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .header {
     display: flex;
     justify-content: space-between;

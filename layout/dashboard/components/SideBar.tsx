@@ -8,7 +8,7 @@ import SideBarDashboardMenu from './Menu'
 import Link from 'next/link'
 import { ROUTES } from '@/models/enums'
 import { useLayoutStore } from '@/layout/store'
-import { useMediaQuery } from '@/hook/useMediaQuery '
+import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 
 const SideBarUi = () => {
   const isDesktop = useMediaQuery(768)

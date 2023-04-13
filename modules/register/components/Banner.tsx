@@ -6,7 +6,7 @@ import ImageUi from '@/components/UI/Image'
 import { Steps, Typography } from 'antd'
 import { StepsRegisterStyled } from '../styles'
 import { useRegisterCtx } from '../context'
-import { useMediaQuery } from '@/hook/useMediaQuery '
+import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 
 const RegisterBanner = () => {
   const isDesktop = useMediaQuery(768)

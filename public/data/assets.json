@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "بیتکوین",
+    "symbol": "BTC",
+    "price": 30000,
+    "volume": 0.9,
+    "color": "#F7931A",
+    "value": 26883,
+    "percent": 45
+  },
+  {
+    "id": 2,
+    "name": "اتریوم",
+    "symbol": "ETH",
+    "price": 1900,
+    "volume": 7,
+    "color": "#7EB6F7",
+    "value": 13000,
+    "percent": 30
+  },
+  {
+    "id": 3,
+    "name": "ترون",
+    "symbol": "Tron",
+    "price": 10440,
+    "volume": 0.06484,
+    "color": "#2E2E2E",
+    "value": 5961,
+    "percent": 25
+  }
+]
