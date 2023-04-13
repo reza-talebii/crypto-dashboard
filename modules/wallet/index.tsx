@@ -7,7 +7,7 @@ import { Badge, Col, List, Typography } from 'antd'
 import { useGetAssets } from '@/hook/data'
 
 const Wallet = () => {
-  const { data } = useGetAssets()
+  const { data, isLoading } = useGetAssets()
 
   return (
     <WalletWrapper>
@@ -16,6 +16,7 @@ const Wallet = () => {
           <Typography.Title level={5}>دارایی‌های کیف پول</Typography.Title>
           <List
             className="listWallet"
+            loading={isLoading}
             itemLayout="horizontal"
             dataSource={data}
             renderItem={(item, index) => (

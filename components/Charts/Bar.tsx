@@ -24,7 +24,21 @@ const BarChart = () => {
     },
     plotOptions: {
       bar: {
-        borderRadius: 10,
+        borderRadius: 8,
+        columnWidth: '45%',
+        colors: {
+          backgroundBarRadius: 8,
+          ranges: [
+            {
+              from: 0,
+              to: 1,
+              color: '#388AEA',
+            },
+          ],
+        },
+        dataLabels: {
+          position: 'top',
+        },
       },
     },
 
@@ -35,16 +49,10 @@ const BarChart = () => {
       axisTicks: {
         show: false,
       },
-      labels: {
-        show: false,
-        formatter: function (val) {
-          return val + '%'
-        },
-      },
     },
   }
 
-  return <ReactApexChart height={154} options={options} series={series} type="bar" />
+  return <ReactApexChart height={154} width={372} options={options} series={series} type="bar" />
 }
 
 export default BarChart

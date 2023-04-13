@@ -5,7 +5,7 @@ import PopularCoins from '@/modules/popularCoins'
 import TradingviewChart from '@/modules/tradingviewChart'
 import TransactionValue from '@/modules/transactionValue'
 import Wallet from '@/modules/wallet'
-import { Col, Row, Space } from 'antd'
+import { Col, Row } from 'antd'
 import React from 'react'
 
 const Page = () => {
@@ -17,13 +17,13 @@ const Page = () => {
 
       <Col span={24} lg={18} className="gap-3 flex flex-col">
         <section className="w-full flex gap-3 max-md:flex-col">
-          {/* <Wallet /> */}
+          <Wallet />
           <TransactionValue />
         </section>
-        {/* <TradingviewChart /> */}
+        <TradingviewChart />
       </Col>
       <Col span={24} lg={6}>
-        {/* <PopularCoins /> */}
+        <PopularCoins />
       </Col>
     </Row>
   )

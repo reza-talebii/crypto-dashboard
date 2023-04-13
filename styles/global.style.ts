@@ -15,6 +15,7 @@ body,h1,h2,h3,h4,h5,h6,div,p,strong,button,select,textarea,label,input,input::pl
 
 body{
   background: #E8F4FF !important;
+  overflow-x: hidden !important;
 }
 
 

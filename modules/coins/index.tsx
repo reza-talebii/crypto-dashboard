@@ -11,8 +11,29 @@ import { CoinsSliderWrapper } from './styles'
 import CoinInfo from './components/CoinInfo'
 
 import 'react-multi-carousel/lib/styles.css'
+import { useGetCoins } from '@/hook'
+import { Spin } from 'antd'
 
 const Coins = () => {
+  const { data, isLoading } = useGetCoins({
+    params: {
+      vs_currency: 'usd',
+      order: 'circulating_supply',
+      per_page: 8,
+      page: 1,
+      price_change_percentage: '24h',
+      sparkline: true,
+    },
+  })
+
+  if (isLoading) {
+    return (
+      <CoinsSliderWrapper>
+        <Spin className="w-full mx-auto" />
+      </CoinsSliderWrapper>
+    )
+  }
+
   return (
     <CoinsSliderWrapper>
       <Carousel
@@ -49,15 +70,9 @@ const Coins = () => {
           },
         }}
       >
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
-        <CoinInfo />
+        {data?.map(coin => (
+          <CoinInfo {...coin} key={coin.id} />
+        ))}
       </Carousel>
     </CoinsSliderWrapper>
   )
