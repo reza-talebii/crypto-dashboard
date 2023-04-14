@@ -11,8 +11,6 @@ import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 const RegisterBanner = () => {
   const isDesktop = useMediaQuery(768)
 
-  console.log('isDesktop', isDesktop)
-
   const {
     states: { activeStep },
   } = useRegisterCtx()
