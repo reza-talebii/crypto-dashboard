@@ -9,11 +9,7 @@ export const metadata: Metadata = {
   title: 'ورود',
 }
 
-const Page = async () => {
-  const data = await getSessionServer()
-
-  if (data) redirect(ROUTES.dashboard)
-
+const Page = () => {
   return <Login />
 }
 

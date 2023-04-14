@@ -15,7 +15,7 @@ export const useGetCoins = (args: IArgs) => {
     return res?.data
   }
 
-  const controller = useQuery([RQEndpoint.GET_COINS, args.params], fetcher)
+  const controller = useQuery([RQEndpoint.GET_COINS, JSON.stringify(args.params)], fetcher)
 
   return controller
 }

@@ -9,10 +9,6 @@ export const metadata: Metadata = {
   title: 'پنل کاربری',
 }
 
-export default async function Layout({ children }: IChildrenProps) {
-  const data = await getSessionServer()
-
-  if (!data) redirect(ROUTES.login)
-
+export default function Layout({ children }: IChildrenProps) {
   return <DashboardLayout>{children}</DashboardLayout>
 }
