@@ -4,7 +4,7 @@ import { Typography } from 'antd'
 import React, { FC } from 'react'
 import { styled } from 'styled-components'
 
-import { FaClipboard } from '@react-icons/all-files/fa/FaClipboard'
+import { FaClipboard } from 'react-icons/fa'
 import ButtonUi from '@/components/UI/Button'
 import CodeInputUi from '@/components/UI/CodeInput'
 import CountdownUi from '@/components/UI/Countdown'

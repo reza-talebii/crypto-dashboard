@@ -8,10 +8,10 @@ import Link from 'next/link'
 import ButtonUi from '@/components/UI/Button'
 import InputUi from '@/components/UI/Input'
 import { ROUTES } from '@/models/enums'
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
-import { HiOutlineChatAlt } from '@react-icons/all-files/hi/HiOutlineChatAlt'
+import { BsArrowLeft } from 'react-icons/bs'
+import { HiOutlineChatAlt } from 'react-icons/hi'
 
-import { RiLockPasswordLine } from '@react-icons/all-files/ri/RiLockPasswordLine'
+import { RiLockPasswordLine } from 'react-icons/ri'
 import { emailFormRule, passwordFormRule } from '@/utils'
 import { FormValueLogin } from '../../schema'
 

@@ -3,7 +3,7 @@
 import ButtonUi from '@/components/UI/Button'
 import { Col, Divider, Row } from 'antd'
 import React, { FC, useEffect } from 'react'
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
+import { BsArrowLeft } from 'react-icons/bs'
 import { useRegisterCtx } from '../context'
 import { Register_Steps, ValueOfRegister_Steps } from '../models'
 
