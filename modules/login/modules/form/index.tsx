@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { FC } from 'react'
 import { LoginFromStyled } from './styles'
 import ImageUi from '@/components/UI/Image'
 import { Form, Typography, message } from 'antd'
@@ -12,43 +12,15 @@ import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
 import { HiOutlineChatAlt } from '@react-icons/all-files/hi/HiOutlineChatAlt'
 
 import { RiLockPasswordLine } from '@react-icons/all-files/ri/RiLockPasswordLine'
-import { z } from 'zod'
 import { emailFormRule, passwordFormRule } from '@/utils'
-import { signIn } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { FormValueLogin } from '../../schema'
 
-const FormValueSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8).max(32),
-})
-type FormValue = z.infer<typeof FormValueSchema>
+interface IProps {
+  loading: boolean
+  onSubmit: (values: FormValueLogin) => void
+}
 
-const LoginForm = () => {
-  const router = useRouter()
-  const callbackUrl = useSearchParams()?.get('callbackUrl') || ROUTES.dashboard
-  const [loading, setLoading] = React.useState<boolean>(false)
-
-  const onSubmit = async (values: FormValue) => {
-    if (!FormValueSchema.safeParse(values).success) {
-      throw new Error('Invalid email or password')
-    }
-
-    setLoading(true)
-
-    try {
-      const res = await signIn('credentials', {
-        redirect: false,
-        email: values.email,
-        password: values.password,
-        callbackUrl,
-      })
-
-      res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
-      res?.ok && router.push(callbackUrl)
-    } finally {
-      setLoading(false)
-    }
-  }
+const LoginForm: FC<IProps> = ({ loading, onSubmit }) => {
   return (
     // @ts-ignore
     <LoginFromStyled onFinish={onSubmit}>

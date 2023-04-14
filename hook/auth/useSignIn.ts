@@ -20,8 +20,11 @@ export const useSignIn = () => {
         callbackUrl,
       })
 
+      if (res?.ok) {
+        router.push(callbackUrl)
+        message.success('ورود با موفقیت انجام شد')
+      }
       res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
-      res?.ok && router.push(callbackUrl)
     } finally {
       setLoading(false)
     }
