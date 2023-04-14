@@ -10,9 +10,5 @@ export const metadata: Metadata = {
 }
 
 export default async function Layout({ children }: IChildrenProps) {
-  const data = await getSessionServer()
-
-  if (!data) redirect(ROUTES.login)
-
   return <DashboardLayout>{children}</DashboardLayout>
 }
