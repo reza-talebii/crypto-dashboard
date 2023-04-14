@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { StyledBar } from '../styles/StyledBar'
-import ImageUi from '@/components/UI/Image'
+import ImageUi from '../../../components/UI/Image'
 import { Divider, Typography } from 'antd'
 import SideBarDashboardMenu from './Menu'
 import Link from 'next/link'
-import { ROUTES } from '@/models/enums'
+import { ROUTES } from '@/models/enums/ROUTES'
 import { useLayoutStore } from '@/layout/store'
 import { useMediaQuery } from '@/hook/screen/useMediaQuery '
 

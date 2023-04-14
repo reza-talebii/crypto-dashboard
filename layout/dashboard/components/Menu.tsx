@@ -1,6 +1,6 @@
 'use client'
 
-import { ROUTES } from '@/models/enums'
+import { ROUTES } from '@/models/enums/ROUTES'
 import React from 'react'
 import { MenuDashboardStyled } from '../styles/Menu'
 import { usePathname } from 'next/navigation'

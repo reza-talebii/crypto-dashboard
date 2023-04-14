@@ -3,7 +3,7 @@
 import React from 'react'
 import { BannerLoginWrapper } from './styles/Wrapper'
 import { Typography } from 'antd'
-import ImageUi from '@/components/UI/Image'
+import ImageUi from '../../../../components/UI/Image'
 
 const LoginBanner = () => {
   return (

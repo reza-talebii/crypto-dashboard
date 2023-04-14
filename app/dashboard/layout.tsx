@@ -3,7 +3,7 @@ import { IChildrenProps } from '@/models/interfaces'
 import DashboardLayout from '@/layout/dashboard'
 import { getSessionServer } from '@/utils/getSessionServer'
 import { redirect } from 'next/navigation'
-import { ROUTES } from '@/models/enums'
+import { ROUTES } from '@/models/enums/ROUTES'
 
 export const metadata: Metadata = {
   title: 'پنل کاربری',

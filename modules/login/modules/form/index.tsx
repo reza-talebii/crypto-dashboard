@@ -2,12 +2,12 @@
 
 import React, { FC } from 'react'
 import { LoginFromStyled } from './styles'
-import ImageUi from '@/components/UI/Image'
+import ImageUi from '../../../../components/UI/Image'
 import { Form, Typography, message } from 'antd'
 import Link from 'next/link'
 import ButtonUi from '@/components/UI/Button'
 import InputUi from '@/components/UI/Input'
-import { ROUTES } from '@/models/enums'
+import { ROUTES } from '@/models/enums/ROUTES'
 import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
 import { HiOutlineChatAlt } from '@react-icons/all-files/hi/HiOutlineChatAlt'
 

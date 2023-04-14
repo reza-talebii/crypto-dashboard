@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { BannerRegisterStyled } from '../styles/Banner'
-import ImageUi from '@/components/UI/Image'
+import ImageUi from '../../../components/UI/Image'
 import { Steps, Typography } from 'antd'
 import { StepsRegisterStyled } from '../styles'
 import { useRegisterCtx } from '../context'

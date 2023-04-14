@@ -7,7 +7,7 @@ import LoginForm from './modules/form'
 import LoginBanner from './modules/banner'
 import { useSearchParams } from 'next/navigation'
 import { useSignIn } from '@/hook/auth'
-import { ROUTES } from '@/models/enums'
+import { ROUTES } from '@/models/enums/ROUTES'
 import { FormValueLogin, FormValueLoginSchema } from './schema'
 
 const Login = () => {
