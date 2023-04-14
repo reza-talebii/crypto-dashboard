@@ -1,7 +1,7 @@
 type MenuItem = Required<MenuProps>['items']
 import { MenuProps } from 'antd'
 import { Icons } from '@/components/customIcons'
-import { ROUTES } from '@/models/enums/ROUTES'
+import { ROUTES } from '@/models/enums'
 import { signOutHandler } from '@/utils/signOut'
 
 export const dashboardMenuItems: MenuItem = [

@@ -1,4 +1,4 @@
-import { ROUTES } from '@/models/enums/ROUTES'
+import { ROUTES } from '@/models/enums'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { authOptions } from './api/auth/[...nextauth]/route'

@@ -1,4 +1,4 @@
-import { ROUTES } from '@/models/enums/ROUTES'
+import { ROUTES } from '@/models/enums'
 import Login from '@/modules/login'
 import { getSessionServer } from '@/utils/getSessionServer'
 import { redirect } from 'next/navigation'

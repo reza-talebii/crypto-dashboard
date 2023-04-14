@@ -7,7 +7,7 @@ import { Form, Typography, message } from 'antd'
 import Link from 'next/link'
 import ButtonUi from '@/components/UI/Button'
 import InputUi from '@/components/UI/Input'
-import { ROUTES } from '@/models/enums/ROUTES'
+import { ROUTES } from '@/models/enums'
 import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft'
 import { HiOutlineChatAlt } from '@react-icons/all-files/hi/HiOutlineChatAlt'
 
