@@ -22,7 +22,7 @@ export const useSignIn = () => {
 
       if (res?.ok) {
         router.push(callbackUrl)
-        message.success('ورود با موفقیت انجام شد')
+        message.success('ورود با موفقیت انجام شد در حال انتقال به پنل ...')
       }
       res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
     } finally {

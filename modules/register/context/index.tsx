@@ -50,7 +50,7 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
       const res = await register({
         email: data.email!,
         password: data.password!,
-        password_confirmation: data?.confirmPassword!,
+        password_confirmation: data?.password_confirmation!,
         name: data.fullName!,
       })
 

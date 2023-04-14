@@ -16,6 +16,7 @@ import { confirmPasswordFormRule, emailFormRule, passwordFormRule, phoneNumberRu
 import ButtonUi from '@/components/UI/Button'
 import PhoneConfirmCode from './components/ConfirmCode'
 import Validator from 'validator'
+import InputPassword from '@/components/UI/InputPassword'
 
 const formValueSchema = z.object({
   phoneNumber: z.string().length(11),
@@ -103,12 +104,12 @@ const CommunicationalInfo = () => {
         <Row gutter={[16, 16]}>
           <Col md={12} span={24}>
             <Form.Item name={'password'} rules={passwordFormRule}>
-              <InputUi placeholder="********" label="رمز عبور" icon={<RiLockPasswordLine />} />
+              <InputPassword placeholder="********" label="رمز عبور" icon={<RiLockPasswordLine />} />
             </Form.Item>
           </Col>
           <Col md={12} span={24}>
             <Form.Item name={'password_confirmation'} rules={confirmPasswordFormRule(passwordValue)}>
-              <InputUi placeholder="********" label="تکرار رمز عبور" icon={<RiLockPasswordLine />} />
+              <InputPassword placeholder="********" label="تکرار رمز عبور" icon={<RiLockPasswordLine />} />
             </Form.Item>
           </Col>
         </Row>

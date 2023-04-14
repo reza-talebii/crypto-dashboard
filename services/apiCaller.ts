@@ -2,6 +2,7 @@ import { message } from 'antd'
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { axiosInstance } from './axiosInstance'
 import { TemplateAuthResponse } from '@/models/interfaces'
+import { signOutHandler } from '@/utils/signOut'
 
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => response,
@@ -16,6 +17,10 @@ axiosInstance.interceptors.response.use(
       }
 
       error?.response?.data?.message ?? message.error(error?.response?.data?.message!)
+    }
+
+    if (error?.response?.status === 401) {
+      signOutHandler()
     }
 
     return Promise.reject(error)

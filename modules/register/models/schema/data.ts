@@ -8,7 +8,7 @@ export const registerData = z
     phoneNumber: z.string(),
     email: z.string().email(),
     password: z.string().min(8),
-    confirmPassword: z.string().min(8),
+    password_confirmation: z.string().min(8),
     code: z.string().length(4),
     province: z.string(),
     city: z.string(),
