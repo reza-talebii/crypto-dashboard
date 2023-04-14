@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react'
 import { LoginFromStyled } from './styles'
-import ImageUi from '../../../../components/UI/Image'
+import ImageUi from '@/components/UI/image'
 import { Form, Typography, message } from 'antd'
 import Link from 'next/link'
 import ButtonUi from '@/components/UI/Button'

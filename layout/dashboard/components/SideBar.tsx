@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { StyledBar } from '../styles/StyledBar'
-import ImageUi from '../../../components/UI/Image/index'
+import ImageUi from '@/components/UI/image'
 import { Divider, Typography } from 'antd'
 import SideBarDashboardMenu from './Menu'
 import Link from 'next/link'
