@@ -3,4 +3,4 @@
 import { ROUTES } from '@/models/enums'
 import { signOut } from 'next-auth/react'
 
-export const signOutHandler = () => signOut({ callbackUrl: ROUTES.login, redirect: true })
+export const signOutHandler = () => signOut({ callbackUrl: ROUTES.login })
