@@ -16,7 +16,6 @@ import { z } from 'zod'
 import { emailFormRule, passwordFormRule } from '@/utils'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useSignIn } from '@/hook/auth/useSignIn'
 
 const FormValueSchema = z.object({
   email: z.string().email(),
@@ -25,15 +24,30 @@ const FormValueSchema = z.object({
 type FormValue = z.infer<typeof FormValueSchema>
 
 const LoginForm = () => {
+  const router = useRouter()
   const callbackUrl = useSearchParams()?.get('callbackUrl') || ROUTES.dashboard
-  const { signInHandler, loading } = useSignIn()
+  const [loading, setLoading] = React.useState<boolean>(false)
 
   const onSubmit = async (values: FormValue) => {
     if (!FormValueSchema.safeParse(values).success) {
       throw new Error('Invalid email or password')
     }
 
-    signInHandler(values.email, values.password, callbackUrl)
+    setLoading(true)
+
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+        callbackUrl,
+      })
+
+      res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
+      res?.ok && router.push(callbackUrl)
+    } finally {
+      setLoading(false)
+    }
   }
   return (
     // @ts-ignore

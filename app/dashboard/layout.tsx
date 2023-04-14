@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { IChildrenProps } from '@/models/interfaces'
 import DashboardLayout from '@/layout/dashboard'
-import { getSessionServer } from '@/utils/auth/getSessionServer'
+import { getSessionServer } from '@/utils/getSessionServer'
 import { redirect } from 'next/navigation'
 import { ROUTES } from '@/models/enums'
 

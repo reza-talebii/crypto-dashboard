@@ -3,7 +3,6 @@ import { MenuProps } from 'antd'
 import { signOut } from 'next-auth/react'
 import { Icons } from '@/components/customIcons'
 import { ROUTES } from '@/models/enums'
-import { signOutHandler } from '@/utils'
 
 export const dashboardMenuItems: MenuItem = [
   {
@@ -32,7 +31,11 @@ export const dashboardMenuItems: MenuItem = [
     label: 'خروج',
     icon: <Icons name="logout" />,
     key: ROUTES.home,
-    onClick: () => signOutHandler(),
+    onClick: () =>
+      signOut({
+        redirect: true,
+        callbackUrl: ROUTES.login,
+      }),
     className: 'logOut',
   },
 ]

@@ -1,6 +1,6 @@
 import { ROUTES } from '@/models/enums'
 import { redirect } from 'next/navigation'
-import { getSessionServer } from '@/utils/auth/getSessionServer'
+import { getSessionServer } from '@/utils/getSessionServer'
 
 export default async function Home() {
   const user = await getSessionServer()

@@ -16,17 +16,26 @@ const ConfigProviders: FC<{ children: ReactNode }> = ({ children }) => {
     token: antdThemeToken,
     components: antdThemeComponents,
   }
-
-  const [queryClient] = useState(() => new QueryClient({ defaultOptions: { queries: { refetchInterval: 20000 } } }))
-
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchInterval: 20000,
+          },
+        },
+      }),
+  )
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <ConfigProvider theme={antdTheme} direction="rtl" locale={fa_IR}>
-          <ThemeProvider theme={styledComponentsTheme}>
-            <GlobalStyle />
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </ThemeProvider>
+          <StyledComponentsRegistry>
+            <ThemeProvider theme={styledComponentsTheme}>
+              <GlobalStyle />
+              {children}
+            </ThemeProvider>
+          </StyledComponentsRegistry>
         </ConfigProvider>
       </QueryClientProvider>
     </SessionProvider>

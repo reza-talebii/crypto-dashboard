@@ -9,7 +9,6 @@ import { signIn } from 'next-auth/react'
 import { ROUTES } from '@/models/enums'
 import { message } from 'antd'
 import { useRouter } from 'next/navigation'
-import { useSignIn } from '@/hook/auth'
 
 interface IContextValue {
   states: {
@@ -29,7 +28,7 @@ interface IContextValue {
 export const RegisterCtx = createContext<IContextValue | undefined>(undefined)
 
 export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const { signInHandler } = useSignIn()
+  const router = useRouter()
 
   const [registerLoading, setRegisterLoading] = useState<boolean>(false)
   const { register } = new AuthService()
@@ -48,14 +47,25 @@ export const RegisterProvider: FC<{ children: ReactNode }> = ({ children }) => {
     try {
       const res = await register({
         email: data.email!,
-        password: data.password!,
-        password_confirmation: data.confirmPassword!,
+        password: '12345678',
+        password_confirmation: '12345678',
         name: data.fullName!,
       })
 
       if (res.status === 200) {
         try {
-          signInHandler(data.email!, data.password!, ROUTES.dashboard)
+          const res = await signIn('credentials', {
+            redirect: false,
+            email: data.email!,
+            password: '12345678',
+            callbackUrl: ROUTES.dashboard,
+          })
+
+          res?.error && message.error('خطایی در ارتباط با سرور رخ داده است')
+          if (res?.ok) {
+            message.success('ثبت نام شما باموفقیت انجام شد در حال انتقال به پنل ...')
+            router.push(ROUTES.dashboard)
+          }
         } finally {
           setRegisterLoading(false)
         }

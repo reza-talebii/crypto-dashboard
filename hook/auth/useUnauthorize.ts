@@ -1,9 +1,7 @@
 'use client'
 
-import { ROUTES } from '@/models/enums'
 import { axiosInstance } from '@/services/axiosInstance'
-import { signOutHandler } from '@/utils/auth/signOut'
-import { signOut } from 'next-auth/react'
+import { signOutHandler } from '@/utils/signOut'
 
 export const useUnauthorized = () => {
   axiosInstance.interceptors.response.use(

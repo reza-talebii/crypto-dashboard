@@ -1,6 +1,6 @@
 import { ROUTES } from '@/models/enums'
 import Register from '@/modules/register'
-import { getSessionServer } from '@/utils/auth/getSessionServer'
+import { getSessionServer } from '@/utils/getSessionServer'
 import { redirect } from 'next/navigation'
 import { Metadata } from 'next/types'
 import React from 'react'

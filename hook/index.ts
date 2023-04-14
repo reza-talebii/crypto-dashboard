@@ -1,2 +1,2 @@
-export * from './auth/useGetSession'
+export * from './useGetSession'
 export * from './data'
