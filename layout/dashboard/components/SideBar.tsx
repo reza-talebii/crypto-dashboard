@@ -14,10 +14,10 @@ const SideBarUi = () => {
   const isDesktop = useMediaQuery(768)
   const { collapseSidebar, openMenu, toggleOpenMenu } = useLayoutStore()
 
-  const x = !isDesktop ? false : collapseSidebar
+  const conditionCollapse = !isDesktop ? false : collapseSidebar
 
   return (
-    <StyledBar onClick={() => openMenu && toggleOpenMenu()} collapsed={x} openMenu={openMenu}>
+    <StyledBar onClick={() => openMenu && toggleOpenMenu()} collapsed={conditionCollapse} openMenu={openMenu}>
       <Link href={ROUTES.dashboard}>
         <ImageUi src="/assets/images/common/logo.svg" className="mx-auto" alt="logo" width="58px" height="54px" />
       </Link>
