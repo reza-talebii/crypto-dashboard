@@ -10,5 +10,14 @@ export const metadata: Metadata = {
 }
 
 export default async function Layout({ children }: IChildrenProps) {
-  return <DashboardLayout>{children}</DashboardLayout>
+  const data = await getSessionServer()
+
+  // if (!data) redirect(ROUTES.login)
+
+  return (
+    <DashboardLayout>
+      {JSON.stringify(data)}
+      {children}
+    </DashboardLayout>
+  )
 }
