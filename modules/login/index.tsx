@@ -22,9 +22,6 @@ const Login = () => {
     signInHandler(values.email, values.password, callbackUrl)
   }
 
-  console.log(process.env.VERCEL)
-  console.log(process.env.NEXTAUTH_URL)
-
   return (
     <LoginLayoutStyled>
       <Col md={{ span: 12, order: 0 }} span={0} order={1}>
