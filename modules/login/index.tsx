@@ -9,13 +9,8 @@ import { useSearchParams } from 'next/navigation'
 import { useSignIn } from '@/hook/auth'
 import { ROUTES } from '@/models/enums'
 import { FormValueLogin, FormValueLoginSchema } from './schema'
-import { useGetSession } from '@/hook'
 
 const Login = () => {
-  const { user } = useGetSession()
-
-  console.log(user)
-
   const callbackUrl = useSearchParams()?.get('callbackUrl') || ROUTES.dashboard
   const { loading, signInHandler } = useSignIn()
 
