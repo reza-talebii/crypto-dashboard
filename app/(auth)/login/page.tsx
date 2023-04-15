@@ -1,3 +1,4 @@
+import { useGetSession } from '@/hook'
 import { ROUTES } from '@/models/enums'
 import Login from '@/modules/login'
 import { getSessionServer } from '@/utils/getSessionServer'
@@ -10,6 +11,10 @@ export const metadata: Metadata = {
 }
 
 const Page = () => {
+  const { user } = useGetSession()
+
+  console.log(user)
+
   return <Login />
 }
 
